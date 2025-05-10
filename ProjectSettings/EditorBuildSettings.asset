@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Shimo/Scene/Title.unity
     guid: 347588f85b5e54743be015cf2295fa0d
   - enabled: 1
-    path: Assets/Main/Scenes/Main.unity
+    path: Assets/Shimo/Scene/shimoMain.unity
     guid: 0bb1f43acf98fbf4ca7e7e182ee54ed7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
