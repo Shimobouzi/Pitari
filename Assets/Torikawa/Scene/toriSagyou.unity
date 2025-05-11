@@ -465,6 +465,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accelThreshold: 5
   moveSpeed: 1.5
+  isMoving: 0
 --- !u!1 &834676976
 GameObject:
   m_ObjectHideFlags: 0
