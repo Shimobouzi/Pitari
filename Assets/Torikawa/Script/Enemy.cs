@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
-        _Move();
+       // _Move();
     }
 
     private void _Move()
