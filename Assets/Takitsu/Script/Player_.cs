@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player_ : MonoBehaviour
 {   // variableーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 	public enum MoveStates		// 移動状態: 停止、歩行、走行

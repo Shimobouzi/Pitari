@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public int speed;
+    public int coolTime;
     void Start()
     {
         
@@ -13,4 +14,16 @@ public class EnemyBase : MonoBehaviour
     {
         
     }
+
+    public void Idel()
+    {
+
+    }
+
+    public void Encount()
+    {
+
+    }
+
+    //public void 
 }
