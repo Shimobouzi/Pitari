@@ -56,7 +56,7 @@ public class PlayerMove : MonoBehaviour
         isMoving = false;
     }
     
-	private void OnCollisionEnter2D(Collision2D collision)
+	private void OnCollisionEnter(Collision collision)
     { 
 
 		// ぶつかったオブジェクトの名前を取得
