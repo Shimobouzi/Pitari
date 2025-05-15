@@ -17,12 +17,35 @@ public class PlayerMove : MonoBehaviour
     private float moveSpeed = 3f;
 
     [SerializeField]
-
     private float duration = 0.2f; // 移動時間
+
+    [SerializeField]
+    private float hideDelay = 0.2f; //隠れるラグ
+
+    //初めて移動したらfalse
+    private bool isFirst = true;
 
     // プレイヤーが移動中かどうかのフラグ
     private bool isMoving = false;
 
+    //プレイヤーが隠れているかのフラグ
+    private static bool isHiding = false;
+
+
+    /*Editor内格納*/
+    [SerializeField]
+    private GameObject People;
+    [SerializeField]
+    private GameObject Object;
+    [SerializeField]
+    private GameObject Effect;
+
+    private void Start()
+    {
+        People.SetActive(true);
+        Object.SetActive(false);
+        Effect.SetActive(false);
+    }
 
     void Update()
     {
@@ -31,7 +54,16 @@ public class PlayerMove : MonoBehaviour
         // 一定の加速度以上で「振った」と判定
         if (accel.magnitude > accelThreshold && !isMoving)
         {
+            if (isHiding)　//モノから人に化ける処理
+            {
+                StartCoroutine(DontHidePlayer());
+            }
             StartCoroutine(MovePlayer());
+            isFirst = false;
+        }
+        else if(!isFirst && !isHiding && !isMoving)　//モノに化ける処理
+        {
+            StartCoroutine(HidePlayer());
         }
     }
 
@@ -55,8 +87,38 @@ public class PlayerMove : MonoBehaviour
 
         isMoving = false;
     }
-    
-	private void OnCollisionEnter(Collision collision)
+
+    /// <summary>
+    /// モノに化ける処理
+    /// </summary>
+    IEnumerator HidePlayer() 
+    {
+        yield return new WaitForSeconds(hideDelay);
+        if (isMoving) yield break;
+        isHiding = true;
+        People.SetActive(false);
+        Object.SetActive(true);
+        Effect.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        Effect.SetActive(false);
+    }
+
+
+    /// <summary>
+    /// モノから人に化ける処理
+    /// </summary>
+    IEnumerator DontHidePlayer()
+    {
+        isHiding = false;
+        Object.SetActive(false);
+        People.SetActive(true);
+        Effect.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        Effect.SetActive(false);
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
     { 
 
 		// ぶつかったオブジェクトの名前を取得
@@ -69,6 +131,11 @@ public class PlayerMove : MonoBehaviour
 			Debug.Log("敵に当たりました！");
 		}
 	}
+
+    public static bool GetisHiding()
+    {
+        return isHiding;
+    }
 
     private Vector3 JoyconUpdate()
     {
