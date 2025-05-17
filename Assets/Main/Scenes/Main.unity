@@ -679,7 +679,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.9467, y: -3.5, z: 0}
-  m_LocalScale: {x: 41.894, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -786,7 +786,7 @@ Transform:
   m_GameObject: {fileID: 1781003350}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.1, y: -1.6996317, z: 0}
+  m_LocalPosition: {x: 61.2, y: -1.6996317, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -806,6 +806,7 @@ GameObject:
   - component: {fileID: 2070374313}
   - component: {fileID: 2070374312}
   - component: {fileID: 2070374311}
+  - component: {fileID: 2070374317}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -820,7 +821,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070374310}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d92219de9ecac1541888ca9919152f71, type: 3}
   m_Name: 
@@ -942,7 +943,7 @@ Transform:
   m_GameObject: {fileID: 2070374310}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: -1.604, z: 0}
+  m_LocalPosition: {x: -37.35, y: -1.604, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -952,6 +953,27 @@ Transform:
   - {fileID: 669277098}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2070374317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070374310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b1f9e01b78220b4780e643c3a472d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  accelThreshold: 2.5
+  moveSpeed: 3
+  speedMultiplier: 2
+  duration: 0.2
+  hideDelay: 0.2
+  boostDuration: 5
+  People: {fileID: 1341283514}
+  Object: {fileID: 833038792}
+  Effect: {fileID: 1348580574}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
