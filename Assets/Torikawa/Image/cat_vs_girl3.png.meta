@@ -103,10 +103,10 @@ TextureImporter:
       name: cat_vs_girl3_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 558
-        height: 842
+        x: 102
+        y: 127
+        width: 550
+        height: 829
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

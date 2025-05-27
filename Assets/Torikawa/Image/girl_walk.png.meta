@@ -103,9 +103,9 @@ TextureImporter:
       name: girl_walk_0
       rect:
         serializedVersion: 2
-        x: 142
+        x: 273
         y: 185
-        width: 603
+        width: 472
         height: 710
       alignment: 0
       pivot: {x: 0, y: 0}
