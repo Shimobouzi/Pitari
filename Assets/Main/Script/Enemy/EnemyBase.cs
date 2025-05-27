@@ -16,13 +16,12 @@ public class EnemyBase : MonoBehaviour
     {
         instance = this;
     }
-    protected void Start()
+    protected virtual void Start()
     {
         thisScale = transform.localScale;
         Idel();
     }
 
-    // Update is called once per frame
     protected void Update()
     {
         transform.localScale = new Vector3(thisScale.x * isLeft, thisScale.y, thisScale.z);
@@ -40,13 +39,14 @@ public class EnemyBase : MonoBehaviour
     protected void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
-        {
+        { 
+            Debug.Log("Attack");
             StopAllCoroutines();
             StartCoroutine(AttackPlayer());
         }
     }
 
-    protected void Idel()
+    protected virtual void Idel()
     {
         StartCoroutine(LeftRightMove(5f, nomalSpeed));
     }
