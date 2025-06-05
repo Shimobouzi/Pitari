@@ -831,13 +831,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 253248707264146617, guid: 5786eaef59051c943bded69e7c32001d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 350908756128579582, guid: 5786eaef59051c943bded69e7c32001d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.67674
+      value: 17.6
       objectReference: {fileID: 0}
     - target: {fileID: 350908756128579582, guid: 5786eaef59051c943bded69e7c32001d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7272762
+      value: -0.66
       objectReference: {fileID: 0}
     - target: {fileID: 350908756128579582, guid: 5786eaef59051c943bded69e7c32001d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -875,11 +879,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Harituki
       objectReference: {fileID: 0}
+    - target: {fileID: 7056067905742223056, guid: 5786eaef59051c943bded69e7c32001d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7056067905742223056, guid: 5786eaef59051c943bded69e7c32001d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1205328257}
   m_SourcePrefab: {fileID: 100100000, guid: 5786eaef59051c943bded69e7c32001d, type: 3}
+--- !u!1 &1205328256 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7056067905742223056, guid: 5786eaef59051c943bded69e7c32001d, type: 3}
+  m_PrefabInstance: {fileID: 1205328255}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1205328257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205328256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 149a156db0e72ac44a59f21b81e7ec0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSpeed: 2
+  runSpeed: 10
+  isLeft: 1
+  thisScale: {x: 0, y: 0, z: 0}
+  watchTime: 0
+  killThreshold: 2
+  player: {fileID: 0}
 --- !u!1001 &1261509211
 PrefabInstance:
   m_ObjectHideFlags: 0
