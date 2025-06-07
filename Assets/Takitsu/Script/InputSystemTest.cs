@@ -22,12 +22,17 @@ public class InputSystemTest : MonoBehaviour
 		if (Input_Player.Instance.RightMove_performed)
 		{
 			text[0].text = "右移動";
-			//transform.position += Vector3.right / 10.0f;
+			transform.position += Vector3.right / 10.0f;
 		}
 		else if (Input_Player.Instance.LeftMove_Performed)
 		{
 			text[0].text = "左移動";
-			//transform.position += Vector3.left / 10.0f;
+			transform.position += Vector3.left / 10.0f;
+		}
+		else if(Input_Player.Instance.RightDash_Performed)
+		{
+			text[0].text = "右ダッシュ";
+			transform.position += Vector3.right / 5.0f;
 		}
 		else
 		{
