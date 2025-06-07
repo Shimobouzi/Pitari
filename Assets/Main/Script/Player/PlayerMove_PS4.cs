@@ -134,4 +134,28 @@ public class PlayerMove_PS4 : MonoBehaviour
     {
         return isHiding;
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("EnemySight"))
+        {
+            if (PlayerMove.GetisHiding())
+            {
+                Debug.Log("プレイヤー：視界内にいるけど擬態中（セーフ）");
+            }
+            else
+            {
+                Debug.Log("プレイヤー：視界内にいて擬態してない！（アウト）");
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("EnemySight"))
+        {
+            Debug.Log("プレイヤー：視界外に出た");
+        }
+    }
+
 }
