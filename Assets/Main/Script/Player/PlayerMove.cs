@@ -54,14 +54,14 @@ public class PlayerMove : MonoBehaviour
         // 一定の加速度以上で「振った」と判定
         if (accel.magnitude > accelThreshold && !isMoving)
         {
-            if (isHiding)　//モノから人に化ける処理
+            if (isHiding)//モノから人に化ける処理
             {
                 StartCoroutine(DontHidePlayer());
             }
             StartCoroutine(MovePlayer());
             isFirst = false;
         }
-        else if(!isFirst && !isHiding && !isMoving)　//モノに化ける処理
+        else if (!isFirst && !isHiding && !isMoving)　//モノに化ける処理
         {
             StartCoroutine(HidePlayer());
         }
@@ -92,7 +92,7 @@ public class PlayerMove : MonoBehaviour
     /// <summary>
     /// モノに化ける処理
     /// </summary>
-    IEnumerator HidePlayer() 
+    IEnumerator HidePlayer()
     {
         yield return new WaitForSeconds(hideDelay);
         if (isMoving) yield break;
@@ -120,18 +120,18 @@ public class PlayerMove : MonoBehaviour
 
 
     private void OnCollisionEnter(Collision collision)
-    { 
+    {
 
-		// ぶつかったオブジェクトの名前を取得
-		Debug.Log("衝突したオブジェクト: " + collision.gameObject.name);
+        // ぶつかったオブジェクトの名前を取得
+        Debug.Log("衝突したオブジェクト: " + collision.gameObject.name);
 
-		// もし特定のタグを持つオブジェクトと衝突したら
-		if (collision.gameObject.CompareTag("Enemy"))
-		{
+        // もし特定のタグを持つオブジェクトと衝突したら
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
             JoyconController.Instance.OnBuruBuru();
-			Debug.Log("敵に当たりました！");
-		}
-	}
+            Debug.Log("敵に当たりました！");
+        }
+    }
 
     public static bool GetisHiding()
     {

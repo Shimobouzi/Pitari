@@ -3,6 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 
 
+//[RequireComponent(typeof(Collider2D))]
+public class DisguiseColliderController : MonoBehaviour
+{
+    private Collider2D playerCollider;
+
+    private void Awake()
+    {
+        playerCollider = GetComponent<Collider2D>();
+    }
+
+    private void Update()
+    {
+        if (PlayerMove.GetisHiding())
+        {
+            if (playerCollider.enabled)
+            {
+                playerCollider.enabled = false;
+                Debug.Log("擬態中：当たり判定無効");
+            }
+        }
+        else
+        {
+            if (!playerCollider.enabled)
+            {
+                playerCollider.enabled = true;
+                Debug.Log("擬態解除：当たり判定有効");
+            }
+        }
+    }
+}
+
 public class PlayerMove2 : MonoBehaviour
 {
 
@@ -72,7 +103,7 @@ public class PlayerMove2 : MonoBehaviour
         if (accel.magnitude > accelThreshold && !isMoving)
         {
             //加速度の強さに応じて速度を調整
-            float strengthMultiplier = Mathf.Clamp((accelPower - accelThreshold) * speedMultiplier,  1f, 4f);//速度倍率を計算//最小1倍　最大4倍
+            float strengthMultiplier = Mathf.Clamp((accelPower - accelThreshold) * speedMultiplier, 1f, 4f);//速度倍率を計算//最小1倍　最大4倍
             dynamicSpeed = originalMoveSpeed * strengthMultiplier; //実際に適用する速度を更新
 
             StartCoroutine(ResetSpeedAfterDelay(boostDuration)); //5秒後に元の速度へ戻す
@@ -113,7 +144,7 @@ public class PlayerMove2 : MonoBehaviour
     /// <summary>
     /// モノに化ける処理
     /// </summary>
-    IEnumerator HidePlayer() 
+    IEnumerator HidePlayer()
     {
         yield return new WaitForSeconds(hideDelay);
         if (isMoving) yield break;
@@ -151,18 +182,18 @@ public class PlayerMove2 : MonoBehaviour
     /// 人が敵に当たるとコントローラー振動処理
     /// </summary>
     private void OnCollisionEnter(Collision collision)
-    { 
+    {
 
-		// ぶつかったオブジェクトの名前を取得
-		Debug.Log("衝突したオブジェクト: " + collision.gameObject.name);
+        // ぶつかったオブジェクトの名前を取得
+        Debug.Log("衝突したオブジェクト: " + collision.gameObject.name);
 
-		// もし特定のタグを持つオブジェクトと衝突したら
-		if (collision.gameObject.CompareTag("Enemy"))
-		{
+        // もし特定のタグを持つオブジェクトと衝突したら
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
             JoyconController.Instance.OnBuruBuru();
-			Debug.Log("敵に当たりました！");
-		}
-	}
+            Debug.Log("敵に当たりました！");
+        }
+    }
 
     public static bool GetisHiding()
     {
