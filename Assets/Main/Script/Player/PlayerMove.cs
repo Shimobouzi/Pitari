@@ -74,7 +74,8 @@ public class PlayerMove : MonoBehaviour
     {
         isMoving = true;
 
-        
+        AudioManager.PlaySE("playerWalk");
+
         float timer = 0f;
 
         while (timer < duration)

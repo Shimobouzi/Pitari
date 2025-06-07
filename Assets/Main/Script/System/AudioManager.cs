@@ -88,6 +88,7 @@ public class AudioManager
             //AudioSource�̍쐬
             _bgmSource = _gameObject.AddComponent<AudioSource>();
             _SESourceDefault = _gameObject.AddComponent<AudioSource>();
+            _gameObject.AddComponent<AudioVolumeChange>();
             for (int i = 0; i < SE_CHANNEL; i++)
             {
                 _SESourceArray[i] = _gameObject.AddComponent<AudioSource>();
@@ -184,6 +185,11 @@ public class AudioManager
     private void StopBgmInternal()
     {
         GetAudioSource(soundType.Bgm).Stop();
+    }
+
+    public static bool PlaySE(string key)
+    {
+        return GetInstanse().PlaySEInternal(key);
     }
 
 
