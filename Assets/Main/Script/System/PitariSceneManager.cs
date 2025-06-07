@@ -12,6 +12,14 @@ public class PitariSceneManager : MonoBehaviour
         Instance = this;
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            ToTitle();
+        }
+    }
+
     public void ToTitle()
     {
         Time.timeScale = 1.0f;
