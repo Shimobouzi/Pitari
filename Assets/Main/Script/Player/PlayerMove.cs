@@ -31,6 +31,8 @@ public class PlayerMove : MonoBehaviour
     //プレイヤーが隠れているかのフラグ
     private static bool isHiding = false;
 
+    private Animator p_animator;
+
 
     /*Editor内格納*/
     [SerializeField]
@@ -42,6 +44,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
+        p_animator = GetComponent<Animator>();
         People.SetActive(true);
         Object.SetActive(false);
         Effect.SetActive(false);
@@ -72,6 +75,7 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     IEnumerator MovePlayer()
     {
+        p_animator.SetBool("isFirstTime", true);
         isMoving = true;
 
         AudioManager.PlaySE("playerWalk");
