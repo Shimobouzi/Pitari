@@ -238,7 +238,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      station_floor_0: -8134870223116650566
+      station_floor_1: 3451339173258464823
+      station_floor_2: -1598397057546181350
+      station_floor_3: -2893597224913696791
+      station_floor_4: 6613607183704167526
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
