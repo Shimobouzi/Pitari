@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// チュートリアル用敵キャラ：座敷童子（右から左に直進→接近で停止）
@@ -15,6 +16,16 @@ public class ZashikiWarashi : MonoBehaviour
     public float stopDistance = 2.0f;    // 停止距離
 
     private bool isWarningShown = false;
+    [SerializeField]
+    private GameObject _tanuki;
+    [SerializeField]
+    private Transform spownPosi;
+
+    private void Start()
+    {
+        playerTransform = transform.Find("Player");
+        spownPosi = transform.Find("spownPosi");
+    }
 
     void Update()
     {
@@ -60,6 +71,7 @@ public class ZashikiWarashi : MonoBehaviour
     {
         isStopped = true;
         Debug.Log("座敷童子が停止しました。イベント開始準備OK。");
+        Instantiate(_tanuki, spownPosi.position, Quaternion.identity);
 
         // TODO: ここでタヌキ出現処理や葉の付与を呼ぶ
         // TanukiManager.Instance.SpawnTanuki(); など
