@@ -69,6 +69,17 @@
                 },
                 {
                     "name": "",
+                    "id": "932ab2d1-a0c3-46e0-9cd6-ed282224d26d",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "10a50cb9-2390-416c-b6f8-fa57a3945653",
                     "path": "<Keyboard>/a",
                     "interactions": "",

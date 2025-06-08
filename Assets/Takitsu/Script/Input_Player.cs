@@ -160,7 +160,7 @@ public class Input_Player : MonoBehaviour
 	{
 		// 右移動	-------------------------------------------------------------------------------
 		// 一定値までスティックが傾いている
-		if (_gamepadLeftStick.x > _RIGHTMOVE_STICKVALUE)
+		if (_gamepadLeftStick.x > _RIGHTMOVE_STICKVALUE && !_gamepadSouthButton)
 		{
 			_rightMove_vector2 = true;
 		}
@@ -180,7 +180,7 @@ public class Input_Player : MonoBehaviour
 			_leftMove_vector2 = false;
 		}
 
-		// 右移動	-------------------------------------------------------------------------------
+		// 右ダッシュ	---------------------------------------------------------------------------
 		// 一定値までスティックが傾いている
 		if (_gamepadLeftStick.x > _RIGHTMOVE_STICKVALUE && _gamepadSouthButton)
 		{
