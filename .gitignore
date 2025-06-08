@@ -73,3 +73,11 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Assets/Joycon/JoyconLib_plugins/win64/hidapi.dll
+Assets/Main/Image/animation_girl1.jpg.meta
+Assets/Main/Image/animation_girl2.jpg.meta
+Assets/Main/Image/animation_girl3.jpg.meta
+Assets/Main/Image/animation_girl4.jpg.meta
+Assets/Main/Image/bench_a.png.meta
+Assets/Main/Image/station__roof.png.meta
+Assets/Main/Image/station_floor.png.meta
+Assets/Main/Image/vending_machine.png.meta
