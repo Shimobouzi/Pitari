@@ -562,9 +562,9 @@ GameObject:
   m_Component:
   - component: {fileID: 750816648}
   - component: {fileID: 750816647}
-  - component: {fileID: 750816649}
-  - component: {fileID: 750816650}
   - component: {fileID: 750816651}
+  - component: {fileID: 750816650}
+  - component: {fileID: 750816649}
   m_Layer: 0
   m_Name: Hayaoni
   m_TagString: Enemy
@@ -654,21 +654,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 912bcbdae2dc6ac4eb4246c5de888f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3.5
-  player: {fileID: 2070374316}
---- !u!114 &750816650
-MonoBehaviour:
+  moveSpeed: 2
+  chaseSpeed: 2.5
+  stopDistance: 1
+--- !u!50 &750816650
+Rigidbody2D:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750816645}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbb3cff26df904e6797c6b4bf0a4aad7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &750816651
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -676,7 +691,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750816645}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -713,7 +728,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 8, y: 2}
+  m_Size: {x: 8.18, y: 9.19}
   m_EdgeRadius: 0
 --- !u!1 &833038792
 GameObject:
