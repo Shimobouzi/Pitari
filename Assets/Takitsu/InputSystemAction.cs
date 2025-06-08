@@ -108,6 +108,15 @@ public partial class @InputSystemAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RightDash"",
+                    ""type"": ""Value"",
+                    ""id"": ""527d98ff-d966-4dea-b97d-d8984448db36"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -174,6 +183,116 @@ public partial class @InputSystemAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
                     ""action"": ""LeftMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Keyboard_Dkey"",
+                    ""id"": ""92fa0e12-dc53-4d7f-88ab-7ddf75881f30"",
+                    ""path"": ""ButtonWithOneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightDash"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Modifier"",
+                    ""id"": ""9e17b590-bb8c-47a6-a193-8356b775aa5b"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""RightDash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Button"",
+                    ""id"": ""45af33e8-1835-4724-8485-a12aed26c9f8"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""RightDash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keyboard_RightArrow"",
+                    ""id"": ""79f34618-776d-4c31-b60a-6dde96f6721d"",
+                    ""path"": ""ButtonWithOneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightDash"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Modifier"",
+                    ""id"": ""300e767e-22a5-4341-a70c-604813fec41b"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""RightDash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Button"",
+                    ""id"": ""7073e5ea-ad34-4b2a-8da3-cd516e8f4022"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""RightDash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad_RightArrow"",
+                    ""id"": ""f3eed16b-5ece-4e84-aa49-2b629bf0385a"",
+                    ""path"": ""ButtonWithOneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightDash"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Modifier"",
+                    ""id"": ""dca0e41f-7a4d-4c4f-b3f6-388d8c247f8f"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""RightDash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Button"",
+                    ""id"": ""cc8c17cd-1306-4b24-adba-bdf998e019f8"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""RightDash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a746f654-f0a8-4809-9748-3ccf35ad829c"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""RightDash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -763,6 +882,7 @@ public partial class @InputSystemAction: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_RightMove = m_Player.FindAction("RightMove", throwIfNotFound: true);
         m_Player_LeftMove = m_Player.FindAction("LeftMove", throwIfNotFound: true);
+        m_Player_RightDash = m_Player.FindAction("RightDash", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -858,6 +978,7 @@ public partial class @InputSystemAction: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_RightMove;
     private readonly InputAction m_Player_LeftMove;
+    private readonly InputAction m_Player_RightDash;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -877,6 +998,10 @@ public partial class @InputSystemAction: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/LeftMove".
         /// </summary>
         public InputAction @LeftMove => m_Wrapper.m_Player_LeftMove;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/RightDash".
+        /// </summary>
+        public InputAction @RightDash => m_Wrapper.m_Player_RightDash;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -909,6 +1034,9 @@ public partial class @InputSystemAction: IInputActionCollection2, IDisposable
             @LeftMove.started += instance.OnLeftMove;
             @LeftMove.performed += instance.OnLeftMove;
             @LeftMove.canceled += instance.OnLeftMove;
+            @RightDash.started += instance.OnRightDash;
+            @RightDash.performed += instance.OnRightDash;
+            @RightDash.canceled += instance.OnRightDash;
         }
 
         /// <summary>
@@ -926,6 +1054,9 @@ public partial class @InputSystemAction: IInputActionCollection2, IDisposable
             @LeftMove.started -= instance.OnLeftMove;
             @LeftMove.performed -= instance.OnLeftMove;
             @LeftMove.canceled -= instance.OnLeftMove;
+            @RightDash.started -= instance.OnRightDash;
+            @RightDash.performed -= instance.OnRightDash;
+            @RightDash.canceled -= instance.OnRightDash;
         }
 
         /// <summary>
@@ -1240,6 +1371,13 @@ public partial class @InputSystemAction: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLeftMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "RightDash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRightDash(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
