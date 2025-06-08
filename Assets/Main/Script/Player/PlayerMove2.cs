@@ -81,6 +81,7 @@ public class PlayerMove2 : MonoBehaviour
     private GameObject Object;
     [SerializeField]
     private GameObject Effect;
+    private Animator p_animator;
 
 
 
@@ -88,10 +89,12 @@ public class PlayerMove2 : MonoBehaviour
     {
         originalMoveSpeed = moveSpeed;
         dynamicSpeed = moveSpeed;
+        p_animator = GetComponent<Animator>();
 
         People.SetActive(true);
         Object.SetActive(false);
         Effect.SetActive(false);
+
     }
 
     void Update()
@@ -126,8 +129,10 @@ public class PlayerMove2 : MonoBehaviour
     /// </summary>
     IEnumerator MovePlayer()
     {
+        p_animator.SetBool("isFirstTime", true);
         isMoving = true;
         float timer = 0f;
+        AudioManager.PlaySE("playerWalk");
 
         while (timer < duration)
         {
