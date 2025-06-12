@@ -73,15 +73,15 @@ public class Input_Player : MonoBehaviour
 
 	// 制御変数	-----------------------------------------------------------------------------------
 	// 右移動中の操作デバイス
-	bool _rightMove_vector2 = false;
-	bool _rightMove_vector3 = false;
+	bool _rightMove_vec2 = false;
+	bool _rightMove_vec3 = false;
 	bool _rightMove_button = false;
 	// 右移動中の操作デバイス
-	bool _leftMove_vector2 = false;
+	bool _leftMove_vec2 = false;
 	bool _leftMove_button = false;
 	// 右移動中の操作デバイス
-	bool _rightDash_vector2 = false;
-	bool _rightDash_vector3 = false;
+	bool _rightDash_vec2 = false;
+	bool _rightDash_vec3 = false;
 	bool _rightDash_button = false;
 	// 判定継続の残り時間
 	private float _accelTime = 0.0f;
@@ -91,8 +91,8 @@ public class Input_Player : MonoBehaviour
 	// 移動するのに必要な加速度
 	private const float _RIGHTMOVE_ACCELVALUE = 0.33f;
 	// ダッシュするのに必要な加速度
-	private const float _RIGHTDASH_ACCELVALUE = 3f;
-	// 加速度超過による、判定継続時間
+	private const float _RIGHTDASH_ACCELVALUE = 2.5f;
+	// 判定継続時間
 	private const float _RIGHTMOVE_ACCELTIME = 0.08f;
 
 	// Joy-Con	-----------------------------------------------------------------------------------
@@ -156,69 +156,69 @@ public class Input_Player : MonoBehaviour
 	/// <summary>
 	/// 2次元的入力(スティック等)による操作を受け付ける
 	/// </summary>
-	private void Action_Vector2()
+	private void Action_Vec2()
 	{
 		// 右移動	-------------------------------------------------------------------------------
 		// 一定値までスティックが傾いている
-		if (_gamepadLeftStick.x > _RIGHTMOVE_STICKVALUE)
+		if (_gamepadLeftStick.x > _RIGHTMOVE_STICKVALUE && !_gamepadSouthButton)
 		{
-			_rightMove_vector2 = true;
+			_rightMove_vec2 = true;
 		}
 		else
 		{
-			_rightMove_vector2 = false;
+			_rightMove_vec2 = false;
 		}
 
 		// 左移動	-------------------------------------------------------------------------------
 		// 一定値までスティックが傾いている
 		if (_gamepadLeftStick.x < -_RIGHTMOVE_STICKVALUE)
 		{
-			_leftMove_vector2 = true;
+			_leftMove_vec2 = true;
 		}
 		else
 		{
-			_leftMove_vector2 = false;
+			_leftMove_vec2 = false;
 		}
 
-		// 右移動	-------------------------------------------------------------------------------
+		// 右ダッシュ	---------------------------------------------------------------------------
 		// 一定値までスティックが傾いている
 		if (_gamepadLeftStick.x > _RIGHTMOVE_STICKVALUE && _gamepadSouthButton)
 		{
-			_rightDash_vector2 = true;
+			_rightDash_vec2 = true;
 		}
 		else
 		{
-			_rightDash_vector2 = false;
+			_rightDash_vec2 = false;
 		}
 	}
 
 	/// <summary>
 	/// 2次元的入力(Joycon加速度等)による操作を受け付ける
 	/// </summary>
-	private void Action_Vector3()
+	private void Action_Vec3()
 	{
 		// Joy-conLの加速度を絶対値に
-		Vector3 _joyconAccel = AbsoluteVec3(_joyconLeftAccel);
+		Vector3 joyconAccel = AbsoluteVec3(_joyconLeftAccel);
 
 		// 右移動	-------------------------------------------------------------------------------
 		// いずれかの軸の加速度が一定以上かつ、右ダッシュ中でない場合
-		if (((_joyconAccel.x > _RIGHTMOVE_ACCELVALUE && _joyconAccel.x < _RIGHTDASH_ACCELVALUE) ||
-			 (_joyconAccel.y > _RIGHTMOVE_ACCELVALUE && _joyconAccel.y < _RIGHTDASH_ACCELVALUE) ||
-			 (_joyconAccel.z > _RIGHTMOVE_ACCELVALUE && _joyconAccel.z < _RIGHTDASH_ACCELVALUE)) && !_rightDash_vector3)
+		if ((((joyconAccel.x > _RIGHTMOVE_ACCELVALUE && joyconAccel.x < _RIGHTDASH_ACCELVALUE) ||
+			  (joyconAccel.y > _RIGHTMOVE_ACCELVALUE && joyconAccel.y < _RIGHTDASH_ACCELVALUE) ||
+			  (joyconAccel.z > _RIGHTMOVE_ACCELVALUE && joyconAccel.z < _RIGHTDASH_ACCELVALUE)) && !_rightDash_vec3))
 		{
-			_rightMove_vector3 = true;
-			_rightDash_vector3 = false;
+			_rightMove_vec3 = true;
+			_rightDash_vec3 = false;
 			_accelTime = _RIGHTMOVE_ACCELTIME;
 		}
 
 		// 右ダッシュ	---------------------------------------------------------------------------
 		// いずれかの軸の加速度が一定以上の場合
-		else if (_joyconAccel.x > _RIGHTDASH_ACCELVALUE ||
-				 _joyconAccel.y > _RIGHTDASH_ACCELVALUE ||
-				 _joyconAccel.z > _RIGHTDASH_ACCELVALUE)
+		else if (joyconAccel.x >= _RIGHTDASH_ACCELVALUE ||
+				 joyconAccel.y >= _RIGHTDASH_ACCELVALUE ||
+				 joyconAccel.z >= _RIGHTDASH_ACCELVALUE)
 		{
-			_rightDash_vector3 = true;
-			_rightMove_vector3 = false;
+			_rightDash_vec3 = true;
+			_rightMove_vec3 = false;
 			_accelTime = _RIGHTMOVE_ACCELTIME;
 		}
 
@@ -230,8 +230,8 @@ public class Input_Player : MonoBehaviour
 		else
 		{
 			_accelTime = 0;
-			_rightMove_vector3 = false;
-			_rightDash_vector3 = false;
+			_rightMove_vec3 = false;
+			_rightDash_vec3 = false;
 		}
 	}
 
@@ -241,11 +241,11 @@ public class Input_Player : MonoBehaviour
 	private void Action()
 	{
 		// 右移動
-		_rightMove_performed = _rightMove_button || _rightMove_vector2 || _rightMove_vector3;
+		_rightMove_performed = _rightMove_button || _rightMove_vec2 || _rightMove_vec3;
 		// 左移動
-		_leftMove_performed = _leftMove_button || _leftMove_vector2;
+		_leftMove_performed = _leftMove_button || _leftMove_vec2;
 		// 右ダッシュ
-		_rightDash_performed = _rightDash_button || _rightDash_vector2 || _rightDash_vector3;
+		_rightDash_performed = _rightDash_button || _rightDash_vec2 || _rightDash_vec3;
 	}
 
 	/// <summary>
@@ -326,8 +326,13 @@ public class Input_Player : MonoBehaviour
 	/// <summary>
 	/// デバッグ
 	/// </summary>
-	public void PrintText_ControllerLstick(Text text)
+	public void PrintText_GamepadLstick(Text text)
 	{
+		if (Gamepad.all.Count <= 0)
+		{
+			text.text = "Could not access gamepad";
+			return;
+		}
 		text.text = $"x: {_gamepadLeftStick.x}  y: {_gamepadLeftStick.y}";
 	}
 
@@ -336,6 +341,11 @@ public class Input_Player : MonoBehaviour
 	/// </summary>
 	public void PrintText_JoyconLaccel(Text text)
 	{
+		if (_joycons.Count <= 0)
+		{
+			text.text = "Could not access Joy-con";
+			return;
+		}
 		text.text = $"x: {_joyconLeftAccel.x}\ny: {_joyconLeftAccel.y}\nz: {_joyconLeftAccel.z}";
 	}
 
@@ -366,8 +376,8 @@ public class Input_Player : MonoBehaviour
 	{
 		GetInput();
 		Action_Button();
-		Action_Vector2();
-		Action_Vector3();
+		Action_Vec2();
+		Action_Vec3();
 		Action();
 	}
 

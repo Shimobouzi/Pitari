@@ -15,7 +15,7 @@ public class InputSystemTest : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		Input_Player.Instance.PrintText_ControllerLstick(text[1]);
+		Input_Player.Instance.PrintText_GamepadLstick(text[1]);
 		Input_Player.Instance.PrintText_JoyconLaccel(text[2]);
 
 
