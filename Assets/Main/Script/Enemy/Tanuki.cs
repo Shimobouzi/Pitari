@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Tanuki : MonoBehaviour
@@ -7,22 +8,27 @@ public class Tanuki : MonoBehaviour
     private bool isStopped = false;
 
     [Header("プレイヤー検知")]
-    public Transform playerTransform;
+    public GameObject playerTransform;
     public float sightRange = 5f;        // 視界警告用
     public float stopDistance = 2.0f;    // 停止距離
 
     private bool isWarningShown = false;
 
+    public GameObject mes;
+    public GameObject zashiki;
+
     private void Start()
     {
-        playerTransform = transform.Find("Player");
+        playerTransform = GameObject.Find("Player");
+        zashiki = GameObject.Find("Zashi-ki(Clone)");
+        mes.SetActive(false);
     }
 
     void Update()
     {
         if (playerTransform == null) return;
 
-        float distance = Vector3.Distance(transform.position, playerTransform.position);
+        float distance = Vector3.Distance(transform.position, playerTransform.transform.position);
 
         // 距離が近くなったら停止（イベント用）
         if (!isStopped && distance <= stopDistance)
@@ -63,8 +69,19 @@ public class Tanuki : MonoBehaviour
         isStopped = true;
         Debug.Log("座敷童子が停止しました。イベント開始準備OK。");
 
+        mes.SetActive(true);
+        //Time.timeScale = 1f;
+        StartCoroutine(tugi());
+        
         // TODO: ここでタヌキ出現処理や葉の付与を呼ぶ
         // TanukiManager.Instance.SpawnTanuki(); など
+    }
+
+    IEnumerator tugi()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(this);
+        Destroy(zashiki);
     }
 
     /// <summary>

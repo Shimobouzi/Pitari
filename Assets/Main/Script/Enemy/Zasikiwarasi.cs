@@ -11,7 +11,7 @@ public class ZashikiWarashi : MonoBehaviour
     private bool isStopped = false;
 
     [Header("プレイヤー検知")]
-    public Transform playerTransform;
+    public GameObject playerTransform;
     public float sightRange = 5f;        // 視界警告用
     public float stopDistance = 2.0f;    // 停止距離
 
@@ -19,19 +19,19 @@ public class ZashikiWarashi : MonoBehaviour
     [SerializeField]
     private GameObject _tanuki;
     [SerializeField]
-    private Transform spownPosi;
+    private GameObject spownPosi;
 
     private void Start()
     {
-        playerTransform = transform.Find("Player");
-        spownPosi = transform.Find("spownPosi");
+        playerTransform = GameObject.Find("Player");
+        spownPosi = GameObject.Find("spownPosi");
     }
 
     void Update()
     {
         if (playerTransform == null) return;
 
-        float distance = Vector3.Distance(transform.position, playerTransform.position);
+        float distance = Vector3.Distance(transform.position, playerTransform.transform.position);
 
         // 距離が近くなったら停止（イベント用）
         if (!isStopped && distance <= stopDistance)
@@ -71,8 +71,8 @@ public class ZashikiWarashi : MonoBehaviour
     {
         isStopped = true;
         Debug.Log("座敷童子が停止しました。イベント開始準備OK。");
-        Instantiate(_tanuki, spownPosi.position, Quaternion.identity);
-
+        Instantiate(_tanuki, spownPosi.transform.position, Quaternion.identity);
+        //Time.timeScale = 0;
         // TODO: ここでタヌキ出現処理や葉の付与を呼ぶ
         // TanukiManager.Instance.SpawnTanuki(); など
     }

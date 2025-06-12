@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public GameObject Clear;
+    public GameObject GameOver;
     void Start()
     {
-        
+        if(PitariSceneManager.isClear)
+        {
+            Clear.SetActive(true);
+            GameOver.SetActive(false);
+        }else
+        {
+            Clear.SetActive(false);
+            GameOver.SetActive(true);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
