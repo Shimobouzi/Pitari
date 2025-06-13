@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      School_wall_open_0: -6024052624067017266
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

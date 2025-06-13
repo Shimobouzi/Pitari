@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shrine_ground_0: 9022405706126870298
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
