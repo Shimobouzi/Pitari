@@ -1583,6 +1583,10 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4878492005294815640, guid: f9e941e6aaeab3d4b9ddaf68dba3848c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4905803378413404366, guid: f9e941e6aaeab3d4b9ddaf68dba3848c, type: 3}
       propertyPath: m_SizeDelta.y
       value: 2.513
@@ -1594,6 +1598,10 @@ PrefabInstance:
     - target: {fileID: 8334640204160272127, guid: f9e941e6aaeab3d4b9ddaf68dba3848c, type: 3}
       propertyPath: m_Name
       value: Player TS
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423488723592980033, guid: f9e941e6aaeab3d4b9ddaf68dba3848c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8423488723592980033, guid: f9e941e6aaeab3d4b9ddaf68dba3848c, type: 3}
       propertyPath: dashThreshold
@@ -2011,7 +2019,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7056067905742223056, guid: 24053654589f9e648948eaf9a832e019, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
