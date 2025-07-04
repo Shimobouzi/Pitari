@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tanuki_0: -8963219801567323207
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
