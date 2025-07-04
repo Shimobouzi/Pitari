@@ -116,7 +116,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1415,6 +1415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c48acfbb21ad7a4ea80e86d415c3df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0.01
   hideDelay: 0.2
   People: {fileID: 5464869531130594927}
   Object: {fileID: 5245549746340534052}

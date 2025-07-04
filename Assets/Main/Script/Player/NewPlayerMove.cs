@@ -4,6 +4,13 @@ using UnityEngine.Rendering;
 
 public class NewPlayerMove : MonoBehaviour
 {
+    // ==========================
+    // ▼ 設定項目（インスペクターで調整可能）
+    // ==========================
+    [Header("移動設定")]
+    [Tooltip("通常の移動速度")]
+    [SerializeField] private float moveSpeed = 0.01f;
+
     [Header("擬態設定")]
     [Tooltip("擬態（モノに変身）するまでの遅延時間")]
     [SerializeField] private float hideDelay = 0.2f;
@@ -23,10 +30,10 @@ public class NewPlayerMove : MonoBehaviour
     // ==========================
 
     private Animator p_animator;           // アニメーター
-    //private float originalMoveSpeed;       // 初期移動速度
-    //private float dynamicSpeed;            // 実際に使う移動速度（加速度で変動）
+    private float MoveSpeed;               // 初期移動速度
     private bool isMoving = false;         // 現在移動中かどうか
     private bool isHiding = false;         // 擬態中かどうか
+    private bool isFirst = true;           // 初回移動かどうか
     //private bool isDashing = false;        // ダッシュ状態かどうか
 
 
@@ -35,8 +42,7 @@ public class NewPlayerMove : MonoBehaviour
     // ==========================
     void Start()
     {
-        //originalMoveSpeed = moveSpeed;
-        //dynamicSpeed = moveSpeed;
+        MoveSpeed = moveSpeed;
         p_animator = GetComponent<Animator>();
 
         // 初期状態：人の姿でスタート
@@ -51,20 +57,32 @@ public class NewPlayerMove : MonoBehaviour
         Joycon();
     }
 
-    private void MoveRight(bool isMove)
-    {
+    private void MoveRight(bool isMove, bool isRun)
+    { 
         if (isMove)
         {
-            p_animator.SetBool("isFirstTime", true);
+            p_animator.SetBool("isWalk", true);
             if (!isMoving)
             {
                 isMoving = true;
                 StartCoroutine(DontHidePlayer());
             }
             Debug.Log("右移動");
-            transform.position += Vector3.right / 10.0f;
-        }else
+            transform.position += Vector3.right * MoveSpeed;
+        }else if (isRun)
         {
+            p_animator.SetBool("isWalk", true);
+            if (!isMoving)
+            {
+                isMoving = true;
+                StartCoroutine(DontHidePlayer());
+            }
+            Debug.Log("右ダッシュ移動");
+            transform.position += Vector3.right * MoveSpeed * 1.3f;
+        }
+        else
+        {
+            p_animator.SetBool("isWalk", false);
             if (isMoving)
             {
                 isMoving = false;
@@ -85,7 +103,6 @@ public class NewPlayerMove : MonoBehaviour
         People.SetActive(false);
         Object.SetActive(true);
         Effect.SetActive(true);
-
         yield return new WaitForSeconds(0.5f);
         Effect.SetActive(false);
     }
@@ -99,10 +116,13 @@ public class NewPlayerMove : MonoBehaviour
         isHiding = false;
         Object.SetActive(false);
         People.SetActive(true);
-        Effect.SetActive(true);
-
-        yield return new WaitForSeconds(0.5f);
-        Effect.SetActive(false);
+        if (!isFirst)
+        {
+            Effect.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            Effect.SetActive(false);
+        }
+        isFirst = false;
     }
 
     // ==========================
@@ -128,7 +148,8 @@ public class NewPlayerMove : MonoBehaviour
 
     private void Joycon()
     {
-        MoveRight(Input_Player.Instance.RightMove_performed);
+        MoveRight(Input_Player.Instance.RightMove_performed, Input_Player.Instance.RightDash_Performed);
+        MoveLeft(Input_Player.Instance.LeftMove_Performed);
     }
 
     private void Oricon()
@@ -148,5 +169,13 @@ public class NewPlayerMove : MonoBehaviour
     private void Preste()
     {
 
+    }
+
+    private void MoveLeft(bool isMove)
+    {
+        if (isMove)
+        {
+            transform.position += Vector3.left * MoveSpeed * 10;
+        }
     }
 }
