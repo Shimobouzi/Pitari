@@ -14,6 +14,7 @@ public class MenuManager : MonoBehaviour
 
     public void OnStart()
     {
+        PitariSceneManager.Instance.ToStage1();
     }
 
     public void OnOption()

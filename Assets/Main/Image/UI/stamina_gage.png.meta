@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      stamina_gage_0: -1970921412379228642
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

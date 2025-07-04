@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BSGJ_logo_re1_0: -7384137009085539020
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

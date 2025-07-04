@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Omikuji_0: -2644636014598043838
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

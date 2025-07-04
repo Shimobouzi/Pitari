@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TicketGate_Signboard_0: -71942606751380044
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

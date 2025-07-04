@@ -12,10 +12,11 @@ public class NextStage : MonoBehaviour
 
     public StageName stage;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == ("Player"))
         {
+            Debug.Log("次のステージ");
             if (stage == StageName.Stage1)
             {
                 PitariSceneManager.Instance.ToStage1();
