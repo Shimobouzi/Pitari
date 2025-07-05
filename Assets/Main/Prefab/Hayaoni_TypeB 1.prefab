@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 6473887489703004373}
   - component: {fileID: 412196013870050052}
   m_Layer: 0
-  m_Name: Hayaoni_TypeB
+  m_Name: Hayaoni_TypeB 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
