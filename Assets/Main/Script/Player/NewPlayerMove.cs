@@ -55,6 +55,7 @@ public class NewPlayerMove : MonoBehaviour
     void Update()
     {
         Joycon();
+        Oricon();
     }
 
     private void MoveRight(bool isMove, bool isRun)
@@ -154,7 +155,7 @@ public class NewPlayerMove : MonoBehaviour
 
     private void Oricon()
     {
-
+        MoveRight(OriconManager.instance.pvcController(), false);
     }
 
     private void MediaPipe()

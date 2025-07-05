@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3281439020182708109}
   - component: {fileID: 4784698008372230869}
   - component: {fileID: 3542017182791540314}
+  - component: {fileID: 6202945402003702925}
+  - component: {fileID: 5337403306747522061}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -87,6 +89,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTime: 180
+--- !u!114 &6202945402003702925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397563025472848640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab89740c718f18f488e4c9955bfeb226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  accelThreshold: 2.5
+--- !u!114 &5337403306747522061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397563025472848640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e04906ce4c268418b33d737cacd600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portName: COM5
+  baudRate: 9600
+  mpu1Acc: {x: 0, y: 0, z: 0}
+  mpu1Gyro: {x: 0, y: 0, z: 0}
+  mpu2Acc: {x: 0, y: 0, z: 0}
+  mpu2Gyro: {x: 0, y: 0, z: 0}
+  leftAcc: {x: 0, y: 0, z: 0}
+  rightAcc: {x: 0, y: 0, z: 0}
 --- !u!1 &2615640903408839286
 GameObject:
   m_ObjectHideFlags: 0

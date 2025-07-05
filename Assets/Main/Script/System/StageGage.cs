@@ -17,7 +17,6 @@ public class StageGage : MonoBehaviour
         stageGage.maxValue = maxDistance;
     }
 
-    // Update is called once per frame
     void Update()
     {
         stageGage.value = maxDistance - Vector2.Distance(player.transform.position, stageEnd.transform.position);
