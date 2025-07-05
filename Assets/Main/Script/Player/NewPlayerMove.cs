@@ -13,7 +13,7 @@ public class NewPlayerMove : MonoBehaviour
 
     [Header("擬態設定")]
     [Tooltip("擬態（モノに変身）するまでの遅延時間")]
-    [SerializeField] private float hideDelay = 0.2f;
+    [SerializeField] private float hideDelay = 0.3f;
 
     [Tooltip("人の見た目オブジェクト")]
     [SerializeField] private GameObject People;
