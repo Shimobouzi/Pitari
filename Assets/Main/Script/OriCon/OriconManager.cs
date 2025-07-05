@@ -40,10 +40,14 @@ public class OriconManager : MonoBehaviour
         /* ---- 両方そろえば前進 ---- */
         if (leftSwing && rightSwing)
         {
-            return true;
-            /* フラグとタイマーをリセット 
+            /* フラグとタイマーをリセット*/ 
             leftSwing = rightSwing = false;
-            swingTimer = 0f;*/
+            swingTimer = 0f;
+            return true;
+        }
+        else if(!leftSwing && !rightSwing)
+        {
+            return false;
         }
         else
         {
@@ -56,13 +60,12 @@ public class OriconManager : MonoBehaviour
                     /* 規定時間内にもう片方が来なかった → フラグ無効化 */
                     leftSwing = rightSwing = false;
                     swingTimer = 0f;
+                    return false;
                 }
             }
         }
 
-        return false;
-
-        
+        return true;
     }
 }
 
