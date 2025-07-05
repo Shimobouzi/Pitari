@@ -14,7 +14,7 @@ public class SpownEnemy : MonoBehaviour
         spownPosi = new Vector3(transform.position.x, _player.transform.position.y, transform.position.z);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         SpownEnemyF(_enemyPrefab);
         Destroy(this.gameObject);

@@ -79,8 +79,8 @@ public class HaritsukiMan : MonoBehaviour
             isEyeVisible = isHandOpen; // 手が開いているときだけ目が見える
 
             // Animatorに状態を反映（アニメーションと連動）
-            animator.SetBool("IsHandOpen", isHandOpen);
-            animator.SetBool("IsEyeVisible", isEyeVisible);
+            animator.SetBool("HirakuBool", isHandOpen);
+            /*animator.SetBool("IsEyeVisible", isEyeVisible);*/
 
             // 当たり判定のサイズと位置をランダムに調整（±30%程度）
             float sizeFactor = Random.Range(0.7f, 1.3f);

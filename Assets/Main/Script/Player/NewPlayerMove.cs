@@ -55,7 +55,7 @@ public class NewPlayerMove : MonoBehaviour
     void Update()
     {
         Joycon();
-        Oricon();
+        //Oricon();
     }
 
     private void MoveRight(bool isMove, bool isRun)
