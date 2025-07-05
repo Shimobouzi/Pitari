@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 // このスクリプトは、敵キャラクター「速鬼」がプレイヤーを検出し、擬態していない場合にゲームオーバーにする処理を行います。
 [RequireComponent(typeof(BoxCollider2D), typeof(Rigidbody2D))]
-public class NewHayaoni : MonoBehaviour
+public class NewHayaoni_TypeA : MonoBehaviour
 {
     // 敵の移動速度
     public float moveSpeed = 4f;
