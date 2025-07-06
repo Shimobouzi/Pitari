@@ -129,13 +129,9 @@ public class NewPlayerMove : MonoBehaviour
     // ==========================
     // ¥ “G‚É“–‚½‚Á‚½‚Æ‚«‚Ìˆ—
     // ==========================
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnBuruBuru()
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            //JoyconController.Instance.OnBuruBuru(); // U“®
-            Debug.Log("“G‚É“–‚½‚è‚Ü‚µ‚½I");
-        }
+        Input_Player.Instance.OnBuruburu();
     }
 
     // ==========================

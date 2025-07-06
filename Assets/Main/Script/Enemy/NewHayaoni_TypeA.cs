@@ -104,6 +104,7 @@ public class NewHayaoni_TypeA : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            other.transform.parent.GetComponent<NewPlayerMove>().OnBuruBuru();
             Debug.Log("速鬼：プレイヤーと接触しました！");
         }
     }
