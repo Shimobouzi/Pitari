@@ -119,6 +119,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &17923331
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5261464245385663067, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
+      propertyPath: m_Name
+      value: HaritukiOtoko
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643140981994922252, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643140981994922252, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643140981994922252, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643140981994922252, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643140981994922252, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643140981994922252, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643140981994922252, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643140981994922252, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643140981994922252, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643140981994922252, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929584028497991611, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
+      propertyPath: detectionSize.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929584028497991611, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
+      propertyPath: detectionSize.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8929584028497991611, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
+      propertyPath: detectionOffset.x
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0fff2fb6736a2fb449892e3698016d80, type: 3}
 --- !u!1001 &159263351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -965,7 +1034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5261464245385663067, guid: f209fc2f551daf84fa1bfbd8b5ff07bb, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7643140981994922252, guid: f209fc2f551daf84fa1bfbd8b5ff07bb, type: 3}
       propertyPath: m_LocalScale.x
@@ -1689,6 +1758,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HayaoniTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 1739160055029420635, guid: aa442c130de0a684da34d7ba17663a05, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8750947138877918498, guid: aa442c130de0a684da34d7ba17663a05, type: 3}
       propertyPath: player
       value: 
@@ -1794,6 +1867,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HayaoniSpawnPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 4705132059915815611, guid: 18f85ebff51eddf4a8d55cbaf8ab0f0b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1812,3 +1889,4 @@ SceneRoots:
   - {fileID: 1975357345}
   - {fileID: 904431781}
   - {fileID: 1833902555}
+  - {fileID: 17923331}
