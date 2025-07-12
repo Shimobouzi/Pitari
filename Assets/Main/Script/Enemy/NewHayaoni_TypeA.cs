@@ -89,7 +89,7 @@ public class NewHayaoni_TypeA : MonoBehaviour
     // 現在のシーンを再読み込みしてゲームオーバー処理を実行
     private void RestartScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Result");
     }
 
     // Unityエディタ上で視界範囲を表示するためのGizmos描画

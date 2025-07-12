@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7127943274901198877
 Transform:
   m_ObjectHideFlags: 0
@@ -256,9 +256,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.7841537, y: -0.6945948}
-      - {x: 0.092451006, y: 0.18397003}
-      - {x: 1.0824838, y: -0.69575274}
+    - - {x: 0, y: 0}
+      - {x: 0, y: 0}
+      - {x: 0, y: 0}
   m_UseDelaunayMesh: 0
 --- !u!114 &5725110345611713671
 MonoBehaviour:
@@ -272,9 +272,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1876f94fe9d994ba7691f134891a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eyeOpen: 0
-  visionWidth: 1.5
-  visionLength: 3
+  visionWidth: 1
+  visionLength: 1.5
+  visionOffset: {x: 0.1, y: 0.2}
+  animator: {fileID: 0}
+  minOpenDuration: 5
+  maxOpenDuration: 8
+  minCloseDuration: 5
+  maxCloseDuration: 8
 --- !u!50 &4505275647422795996
 Rigidbody2D:
   serializedVersion: 5
@@ -312,7 +317,7 @@ Animator:
   m_GameObject: {fileID: 5261464245385663067}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: edccd1159a7e2f54091e6ce1c65aac15, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -375,7 +380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3599051120805375617
 Transform:
   m_ObjectHideFlags: 0
@@ -462,7 +467,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3497271766158043892
 Transform:
   m_ObjectHideFlags: 0
