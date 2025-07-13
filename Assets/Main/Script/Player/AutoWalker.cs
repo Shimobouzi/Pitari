@@ -10,6 +10,8 @@ public class AutoWalker : MonoBehaviour
     private bool walking = false;
     private Animator animator;
 
+    public TutorialUIManager tutorialUIManager; // ← 追加：UI制御用の参照
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -48,6 +50,14 @@ public class AutoWalker : MonoBehaviour
                 {
                     animator.SetBool("isWalk", false);
                 }
+
+                
+// 停止後にポーズUI表示
+                if (tutorialUIManager != null)
+                {
+                     tutorialUIManager.ShowTutorial();
+                }
+
             }
         }
     }
