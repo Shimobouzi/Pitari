@@ -54,8 +54,13 @@ public class NewPlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Joycon();
-        //Oricon();
+        if(PitariDB.Instance.GetConBool() == 0)
+        {
+            Joycon();
+        }else if (PitariDB.Instance.GetConBool() == 1)
+        {
+            Oricon();
+        }
     }
 
     private void MoveRight(bool isMove, bool isRun)
@@ -151,7 +156,7 @@ public class NewPlayerMove : MonoBehaviour
 
     private void Oricon()
     {
-        MoveRight(OriconManager.instance.pvcController(), false);
+        MoveRight(OriconManager.instance.pvcController(), OriconManager.instance.pvcDash());
     }
 
     private void MediaPipe()

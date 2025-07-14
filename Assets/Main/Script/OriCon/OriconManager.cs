@@ -6,6 +6,9 @@ public class OriconManager : MonoBehaviour
     [SerializeField]
     private float accelThreshold = 2.5f;
 
+    [SerializeField]
+    private float DashAT = 5f;
+
     /* 両手同時振り判定用変数 ------------------------- */
     bool leftSwing = false;
     bool rightSwing = false;
@@ -24,49 +27,108 @@ public class OriconManager : MonoBehaviour
         hub = FindFirstObjectByType<PicoSensorHub>();
     }
 
+    /// <summary>
+    /// 塩ビコントローラーでの両手振り動作を検出し、条件を満たした場合にtrueを返す
+    /// </summary>
     public bool pvcController()
     {
-        /* hub が取得できていない場合は何もしない */
+
         if (hub == null) return false;
 
-        // 塩ビコントローラー：左右それぞれの加速度
         Vector3 l = hub.leftAcc;
         Vector3 r = hub.rightAcc;
 
-        /* ---- 左右どちらかがしきい値超えたらフラグ ---- */
+        // 加速度が閾値を超えたら振ったと判定
         if (l.magnitude > accelThreshold) leftSwing = true;
         if (r.magnitude > accelThreshold) rightSwing = true;
 
-        /* ---- 両方そろえば前進 ---- */
+        // 両手が揃って振られた場合 → 成功（true）
         if (leftSwing && rightSwing)
         {
-            /* フラグとタイマーをリセット*/ 
             leftSwing = rightSwing = false;
             swingTimer = 0f;
             return true;
         }
-        else if(!leftSwing && !rightSwing)
+        // どちらの手も振られていない場合 → 失敗（false）
+        else if (!leftSwing && !rightSwing)
         {
             return false;
         }
         else
         {
-            /* 片手だけ振られている状態でタイマー測定 */
-            if (leftSwing || rightSwing)
+            // 片方だけ振られている状態 → タイマーを測定
+            swingTimer += Time.deltaTime;
+
+            if (swingTimer > swingWindow)
             {
-                swingTimer += Time.deltaTime;
-                if (swingTimer > swingWindow)
-                {
-                    /* 規定時間内にもう片方が来なかった → フラグ無効化 */
-                    leftSwing = rightSwing = false;
-                    swingTimer = 0f;
-                    return false;
-                }
+                // もう片方が時間内に来なかった → フラグを無効化してリセット
+                leftSwing = rightSwing = false;
+                swingTimer = 0f;
             }
+
+            // ※バグ修正ポイント：
+            // 以前のコードでは、ここでreturn trueとしていたため
+            // 「片手だけ振っただけでもtrueが返る」状態になっていた。
+            // 結果として、前進アニメーションが意図せず発動していた。
+            return false; // 両手が揃わなかったのでfalseを返す
         }
 
-        return true;
+        // ※以前のコードではここでreturn trueしていたが、すべての分岐でreturnするため不要。
     }
+
+
+    public bool pvcDash()
+    {
+        Debug.Log(accelThreshold);
+
+        if (hub == null) return false;
+
+        Vector3 l = hub.leftAcc;
+        Vector3 r = hub.rightAcc;
+
+        // 加速度が閾値を超えたら振ったと判定
+        if (l.magnitude > DashAT) leftSwing = true;
+        if (r.magnitude > DashAT) rightSwing = true;
+
+        // 両手が揃って振られた場合 → 成功（true）
+        if (leftSwing && rightSwing)
+        {
+            leftSwing = rightSwing = false;
+            swingTimer = 0f;
+            return true;
+        }
+        // どちらの手も振られていない場合 → 失敗（false）
+        else if (!leftSwing && !rightSwing)
+        {
+            return false;
+        }
+        else
+        {
+            // 片方だけ振られている状態 → タイマーを測定
+            swingTimer += Time.deltaTime;
+
+            if (swingTimer > swingWindow)
+            {
+                // もう片方が時間内に来なかった → フラグを無効化してリセット
+                leftSwing = rightSwing = false;
+                swingTimer = 0f;
+            }
+
+            // ※バグ修正ポイント：
+            // 以前のコードでは、ここでreturn trueとしていたため
+            // 「片手だけ振っただけでもtrueが返る」状態になっていた。
+            // 結果として、前進アニメーションが意図せず発動していた。
+            return false; // 両手が揃わなかったのでfalseを返す
+        }
+
+        // ※以前のコードではここでreturn trueしていたが、すべての分岐でreturnするため不要。
+    }
+
+    public void GetPicoHub()
+    {
+        hub = FindFirstObjectByType<PicoSensorHub>();
+    }
+
 }
 
 

@@ -50,11 +50,7 @@ public class PicoSensorHub : MonoBehaviour
 
     void Start()
     {
-        sp = new SerialPort(portName, baudRate) { NewLine = "\n", ReadTimeout = 200, DtrEnable = true, RtsEnable = true };
-        sp.Open();
-        running = true;
-        rxThread = new Thread(ReadLoop) { IsBackground = true };
-        rxThread.Start();
+        ReStart();
     }
 
     void ReadLoop()
@@ -118,6 +114,15 @@ public class PicoSensorHub : MonoBehaviour
             if (sp != null && sp.IsOpen) sp.Close();
         }
         catch { }
+    }
+
+    public void ReStart()
+    {
+        sp = new SerialPort(portName, baudRate) { NewLine = "\n", ReadTimeout = 200, DtrEnable = true, RtsEnable = true };
+        sp.Open();
+        running = true;
+        rxThread = new Thread(ReadLoop) { IsBackground = true };
+        rxThread.Start();
     }
 }
 
