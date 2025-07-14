@@ -18,9 +18,9 @@ public class IntroManager : MonoBehaviour
     {
         sr = GetComponentInChildren<SpriteRenderer>();
 
-        startPos = new Vector3(32f, -4f, 0f);
-        middlePos = new Vector3(-4f, -4f, 0f);
-        exitPos = new Vector3(-20f, -4f, 0f);
+        startPos = new Vector3(38f, -4f, -4f);
+        middlePos = new Vector3(-4f, -4f, -4f);
+        exitPos = new Vector3(-20f, -4f, -4f);
 
         transform.position = startPos;
         sr.flipX = false;
