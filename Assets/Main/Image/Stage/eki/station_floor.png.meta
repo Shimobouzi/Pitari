@@ -108,6 +108,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -115,12 +128,12 @@ TextureImporter:
       name: station_floor_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 11
-        width: 1053
-        height: 376
+        x: 91
+        y: 390
+        width: 23
+        height: 9
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -137,12 +150,12 @@ TextureImporter:
       name: station_floor_1
       rect:
         serializedVersion: 2
-        x: 23
-        y: 11
-        width: 1053
-        height: 376
+        x: 645
+        y: 390
+        width: 25
+        height: 9
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -164,7 +177,7 @@ TextureImporter:
         width: 1053
         height: 376
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -181,12 +194,12 @@ TextureImporter:
       name: station_floor_3
       rect:
         serializedVersion: 2
-        x: 23
-        y: 11
-        width: 1053
-        height: 376
+        x: 1056
+        y: 223
+        width: 23
+        height: 26
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -203,12 +216,12 @@ TextureImporter:
       name: station_floor_4
       rect:
         serializedVersion: 2
-        x: 23
-        y: 11
-        width: 1053
-        height: 376
+        x: 0
+        y: 13
+        width: 14
+        height: 52
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -225,7 +238,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e8535b6e987453c4c89a0347428a4055
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -234,12 +247,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      station_floor_0: -8134870223116650566
-      station_floor_1: 3451339173258464823
-      station_floor_2: -1598397057546181350
-      station_floor_3: -2893597224913696791
-      station_floor_4: 6613607183704167526
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

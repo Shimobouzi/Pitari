@@ -222,6 +222,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1184,50 +1197,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      KariTeki_0: -889302603199780393
-      KariTeki_1: 6895726246344149881
-      KariTeki_10: 5220595155182120923
-      KariTeki_11: 8222552895820403563
-      KariTeki_12: -1698930835977016106
-      KariTeki_13: -5048116364393267617
-      KariTeki_14: 401959259580567813
-      KariTeki_15: -1881690534398884330
-      KariTeki_16: -8481980239898896045
-      KariTeki_17: 2038884806387387572
-      KariTeki_18: 2777875270297004996
-      KariTeki_19: -1217468289537910459
-      KariTeki_2: 2543182431818437355
-      KariTeki_20: -8771449869457779503
-      KariTeki_21: 6984090215534681021
-      KariTeki_22: -6179192194288700768
-      KariTeki_23: -8786911118499383138
-      KariTeki_24: -7427475518321952108
-      KariTeki_25: 5391731219615503768
-      KariTeki_26: -7384965016112080804
-      KariTeki_27: -6090739432557091750
-      KariTeki_28: 8801515847212588639
-      KariTeki_29: -4370946303103284011
-      KariTeki_3: 5816609701022783268
-      KariTeki_30: 9160519922421581492
-      KariTeki_31: 6162702143192304696
-      KariTeki_32: -8417348996195546132
-      KariTeki_33: -1199997887420964089
-      KariTeki_34: -4534580998558564713
-      KariTeki_35: 3440943088197518738
-      KariTeki_36: 4150902208294394167
-      KariTeki_37: 6193953948286556603
-      KariTeki_38: -7020899179746020106
-      KariTeki_39: -2280080366021079014
-      KariTeki_4: 8097744005728576521
-      KariTeki_40: 3320328666591889486
-      KariTeki_41: 5213525454460774272
-      KariTeki_42: -9088879770421992916
-      KariTeki_5: 8725455563771650789
-      KariTeki_6: -4395890637939377473
-      KariTeki_7: 7131602329975808095
-      KariTeki_8: -4933091412172384942
-      KariTeki_9: -4442600983745371397
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
