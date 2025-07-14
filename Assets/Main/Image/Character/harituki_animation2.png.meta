@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      harituki_animation2_0: -7814486037683886814
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

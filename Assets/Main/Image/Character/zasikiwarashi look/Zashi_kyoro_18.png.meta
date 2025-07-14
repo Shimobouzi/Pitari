@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Zashi_kyoro_18_0: 1212561923422417344
+      Zashi_kyoro_18_1: 3800895790837951613
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

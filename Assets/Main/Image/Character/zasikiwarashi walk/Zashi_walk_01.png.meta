@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Zashi_walk_01_0: -2318201896249816844
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
