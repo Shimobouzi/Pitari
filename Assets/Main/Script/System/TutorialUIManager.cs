@@ -83,4 +83,10 @@ public class TutorialUIManager : MonoBehaviour
 
         OnTutorialClosed?.Invoke();
     }
+
+    public void StartGame()
+        {
+            Debug.Log("ゲーム本編スタート！");
+            // 必要に応じて本編開始処理をここに書く
+        }
 }
