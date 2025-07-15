@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bakeneko_animation3_0: -1516074487775370291
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

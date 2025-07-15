@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      animation_girl_walk3_0: -5208655734283443042
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

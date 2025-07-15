@@ -119,12 +119,12 @@ TextureImporter:
       name: Zashi_kyoro_18_0
       rect:
         serializedVersion: 2
-        x: 148
-        y: 259
-        width: 44
-        height: 53
+        x: 135
+        y: 39
+        width: 305
+        height: 409
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,7 +146,7 @@ TextureImporter:
         width: 231
         height: 409
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -163,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Zashi_kyoro_18_0: 1212561923422417344
+      Zashi_kyoro_18_1: 3800895790837951613
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

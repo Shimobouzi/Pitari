@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Toro_front_0: -7990700889171117952
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

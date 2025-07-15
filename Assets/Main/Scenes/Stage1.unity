@@ -981,6 +981,7 @@ MonoBehaviour:
   smokeAnimator: {fileID: 240352332}
   triggerName: PlayKemuri
   startDelay: 14
+  smokeSound: {fileID: 8300000, guid: af256ed7e83f1ab4891dfb869bfde3cf, type: 3}
 --- !u!1 &244758112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2110,6 +2111,14 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3685590527817056241, guid: 42313737e5e9e70478f85f90f388400b, type: 3}
+      propertyPath: footstepClip1
+      value: 
+      objectReference: {fileID: 8300000, guid: 089bf7eac8ff3ea4aab99d949226569b, type: 3}
+    - target: {fileID: 3685590527817056241, guid: 42313737e5e9e70478f85f90f388400b, type: 3}
+      propertyPath: footstepClip2
+      value: 
+      objectReference: {fileID: 8300000, guid: deff3e7690b736446bcdcb1ace03f16b, type: 3}
+    - target: {fileID: 3685590527817056241, guid: 42313737e5e9e70478f85f90f388400b, type: 3}
       propertyPath: spawnOffset.x
       value: 0.8
       objectReference: {fileID: 0}
@@ -2125,6 +2134,10 @@ PrefabInstance:
       propertyPath: disguiseRenderer
       value: 
       objectReference: {fileID: 1776586451}
+    - target: {fileID: 3685590527817056241, guid: 42313737e5e9e70478f85f90f388400b, type: 3}
+      propertyPath: footstepInterval
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3685590527817056241, guid: 42313737e5e9e70478f85f90f388400b, type: 3}
       propertyPath: replacementPrefab
       value: 
@@ -2194,9 +2207,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6407684206687644395, guid: 42313737e5e9e70478f85f90f388400b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 772595527}
     - targetCorrespondingSourceObject: {fileID: 5843150423749985458, guid: 42313737e5e9e70478f85f90f388400b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1879519846}
@@ -2280,103 +2290,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6407684206687644395, guid: 42313737e5e9e70478f85f90f388400b, type: 3}
   m_PrefabInstance: {fileID: 696232105}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &772595527
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 772595522}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &780480873 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 397563025472848640, guid: d51dff494f0ff874dba3222934c7784d, type: 3}
@@ -5144,6 +5057,7 @@ MonoBehaviour:
   smokeAnimator: {fileID: 0}
   triggerName: PlayKemuri
   startDelay: 8
+  smokeSound: {fileID: 0}
 --- !u!111 &1690974369
 Animation:
   m_ObjectHideFlags: 0
@@ -5700,6 +5614,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 745680195}
   moveSpeed: 2
+  footstepClip1: {fileID: 8300000, guid: 26e4713a197cd684ea14c4163b96f039, type: 3}
+  footstepClip2: {fileID: 8300000, guid: a36c6df83c9f6d44da0a817e9733133e, type: 3}
+  footstepInterval: 0.5
+  footstepStartDelay: 17
 --- !u!1 &1950306015
 GameObject:
   m_ObjectHideFlags: 0
@@ -7013,6 +6931,14 @@ PrefabInstance:
     - target: {fileID: 1272231244459738144, guid: cafeb5f3ee63b134bb8295f338be06e3, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5896051398033827919, guid: cafeb5f3ee63b134bb8295f338be06e3, type: 3}
+      propertyPath: m_Size.x
+      value: 2.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 5896051398033827919, guid: cafeb5f3ee63b134bb8295f338be06e3, type: 3}
+      propertyPath: m_Size.y
+      value: 4.05
       objectReference: {fileID: 0}
     - target: {fileID: 6783152583350412441, guid: cafeb5f3ee63b134bb8295f338be06e3, type: 3}
       propertyPath: m_LocalPosition.x

@@ -14,6 +14,17 @@ public class IntroManager : MonoBehaviour
 
     private SpriteRenderer sr;
 
+    [Header("足音設定")]
+    public AudioClip footstepClip1;
+    public AudioClip footstepClip2;
+    public float footstepInterval = 0.5f;
+    public float footstepStartDelay = 17f; // 足音開始までの待機時間
+
+    private AudioSource audioSource;
+    private bool useFirstClip = true;
+    private float footstepTimer = 0f;
+    private bool canPlayFootsteps = false;
+
     void Start()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
@@ -26,6 +37,16 @@ public class IntroManager : MonoBehaviour
         sr.flipX = false;
 
         animator.SetBool("IsWalking", true);
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+
+        // 17秒後に足音再生を許可
+        Invoke("EnableFootsteps", footstepStartDelay);
+    }
+
+    void EnableFootsteps()
+    {
+        canPlayFootsteps = true;
     }
 
     void Update()
@@ -36,9 +57,10 @@ public class IntroManager : MonoBehaviour
         {
             case 0:
                 transform.position = Vector3.MoveTowards(transform.position, middlePos, moveSpeed * Time.deltaTime);
+                HandleFootsteps(state);
                 if (Vector3.Distance(transform.position, middlePos) < 0.01f)
                 {
-                    animator.SetBool("IsWalking", false); // 止まる
+                    animator.SetBool("IsWalking", false);
                     timer = 0f;
                     phase = 1;
                 }
@@ -58,14 +80,30 @@ public class IntroManager : MonoBehaviour
                 timer += Time.deltaTime;
                 if (state.IsName("look around") && state.normalizedTime >= 1f)
                 {
-                    animator.SetBool("IsWalking", true); // → walk に戻る
+                    animator.SetBool("IsWalking", true);
                     phase = 3;
                 }
                 break;
 
             case 3:
                 transform.position = Vector3.MoveTowards(transform.position, exitPos, moveSpeed * Time.deltaTime);
+                HandleFootsteps(state);
                 break;
+        }
+    }
+
+    void HandleFootsteps(AnimatorStateInfo state)
+    {
+        if (canPlayFootsteps && state.IsName("walk"))
+        {
+            footstepTimer += Time.deltaTime;
+            if (footstepTimer >= footstepInterval)
+            {
+                audioSource.clip = useFirstClip ? footstepClip1 : footstepClip2;
+                audioSource.Play();
+                useFirstClip = !useFirstClip;
+                footstepTimer = 0f;
+            }
         }
     }
 }

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bakeneko_animation_eye_0: 717234935994118333
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
