@@ -18,12 +18,15 @@ public class IntroManager : MonoBehaviour
     public AudioClip footstepClip1;
     public AudioClip footstepClip2;
     public float footstepInterval = 0.5f;
-    public float footstepStartDelay = 17f; // 足音開始までの待機時間
+    public float footstepStartDelay = 17f;
 
     private AudioSource audioSource;
     private bool useFirstClip = true;
     private float footstepTimer = 0f;
     private bool canPlayFootsteps = false;
+
+    [Header("非表示・音声停止設定")]
+    public float hideDelay = 32f; // 指定秒数後に非表示・停止
 
     void Start()
     {
@@ -40,13 +43,40 @@ public class IntroManager : MonoBehaviour
 
         audioSource = gameObject.AddComponent<AudioSource>();
 
-        // 17秒後に足音再生を許可
+        // 足音再生許可（17秒後）
         Invoke("EnableFootsteps", footstepStartDelay);
+
+        // 指定秒数後に音声停止と非表示処理
+        Invoke("StopAudioAndHide", hideDelay);
     }
 
     void EnableFootsteps()
     {
         canPlayFootsteps = true;
+    }
+
+    void StopAudioAndHide()
+    {
+        // 足音停止
+        canPlayFootsteps = false;
+
+        // 音声停止
+        if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+        }
+
+        // アニメーション停止
+        if (animator != null)
+        {
+            animator.SetBool("IsWalking", false);
+        }
+
+        // オブジェクト非表示
+        gameObject.SetActive(false);
+
+        // スクリプト停止
+        enabled = false;
     }
 
     void Update()

@@ -8,25 +8,47 @@ public class TutorialUIManager : MonoBehaviour
     public static event System.Action OnTutorialClosed;
 
     [Header("UI要素")]
-    public GameObject pausePanel;         // ポーズ画面の背景パネル
-    public GameObject speechBubble;       // 吹き出しUI
-    public Image speechImage;             // 吹き出しに表示する画像
+    public GameObject pausePanel;
+    public GameObject speechBubble;
+    public Image speechImage;
 
     [Header("狸関連")]
-    public Transform tanuki;              // 狸のTransform
-    public Vector3 tanukiTargetPosition;  // 狸の移動先
-    public float tanukiMoveSpeed = 2f;    // 狸の移動速度
+    public Transform tanuki;
+    public Vector3 tanukiTargetPosition;
+    public float tanukiMoveSpeed = 2f;
     private bool isTanukiMoving = false;
+    private Vector3 tanukiStartPosition;
 
     [Header("画像設定")]
-    public List<Sprite> tutorialSprites = new List<Sprite>(); // 表示する画像リスト
-    public float imageDisplayTime = 2.5f; // 各画像の表示時間（秒）
+    public List<Sprite> tutorialSprites = new List<Sprite>();
+    public float imageDisplayTime = 2.5f;
+
+    [Header("サウンド（AudioClip）")]
+    public AudioClip walkClip;
+    public AudioClip bubbleClip;
+    private AudioSource audioSource;
+
+    [Header("チュートリアル後の待機時間")]
+    public float postTutorialDelay = 3f;
+
+    [Header("ゲーム本編用")]
+    public Camera tutorialCamera;
+    public Camera playerCamera;
+    public GameObject playerController;
+
+    [Header("操作開始までの待機時間")]
+    public float controlEnableDelay = 1.5f;
+
+    private int tutorialCount = 0;
 
     void Start()
     {
         pausePanel.SetActive(false);
         speechBubble.SetActive(false);
+        tanukiStartPosition = tanuki.position;
         tanuki.gameObject.SetActive(false);
+
+        audioSource = gameObject.AddComponent<AudioSource>();
 
         if (speechImage == null)
         {
@@ -37,10 +59,19 @@ public class TutorialUIManager : MonoBehaviour
         {
             Debug.LogWarning("tutorialSprites に画像が登録されていません！");
         }
+
+        if (playerCamera != null) playerCamera.enabled = false;
+        if (playerController != null) playerController.SetActive(false);
+    }
+
+    public void SetTutorialSprites(List<Sprite> newSprites)
+    {
+        tutorialSprites = newSprites;
     }
 
     public void ShowTutorial()
     {
+        tanuki.position = tanukiStartPosition;
         pausePanel.SetActive(true);
         tanuki.gameObject.SetActive(true);
 
@@ -51,6 +82,13 @@ public class TutorialUIManager : MonoBehaviour
         }
 
         isTanukiMoving = true;
+
+        if (walkClip != null)
+        {
+            audioSource.clip = walkClip;
+            audioSource.loop = true;
+            audioSource.Play();
+        }
     }
 
     void Update()
@@ -62,6 +100,12 @@ public class TutorialUIManager : MonoBehaviour
             if (Vector3.Distance(tanuki.position, tanukiTargetPosition) < 0.1f)
             {
                 isTanukiMoving = false;
+
+                if (audioSource.isPlaying)
+                {
+                    audioSource.Stop();
+                }
+
                 StartCoroutine(ShowImageSequence());
             }
         }
@@ -74,7 +118,13 @@ public class TutorialUIManager : MonoBehaviour
         foreach (Sprite sprite in tutorialSprites)
         {
             speechImage.sprite = sprite;
-            yield return new WaitForSeconds(imageDisplayTime); // 秒数で管理
+
+            if (bubbleClip != null)
+            {
+                audioSource.PlayOneShot(bubbleClip);
+            }
+
+            yield return new WaitForSeconds(imageDisplayTime);
         }
 
         speechBubble.SetActive(false);
@@ -82,5 +132,45 @@ public class TutorialUIManager : MonoBehaviour
         tanuki.gameObject.SetActive(false);
 
         OnTutorialClosed?.Invoke();
+
+        tutorialCount++;
+
+        if (tutorialCount >= 2)
+        {
+            yield return new WaitForSeconds(postTutorialDelay);
+            StartGame();
+        }
+    }
+
+    public void StartGame()
+    {
+        Debug.Log("ゲーム本編スタート！");
+
+        if (tutorialCamera != null) tutorialCamera.enabled = false;
+        if (playerCamera != null) playerCamera.enabled = true;
+
+        StartCoroutine(EnablePlayerControlAfterDelay(controlEnableDelay));
+    }
+
+    IEnumerator EnablePlayerControlAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (playerController != null)
+        {
+            playerController.SetActive(true);
+
+            // NewPlayerMove スクリプトを有効化
+            var moveScript = playerController.GetComponent<NewPlayerMove>();
+            if (moveScript != null)
+            {
+                moveScript.enabled = true;
+                Debug.Log("NewPlayerMove が有効になりました！");
+            }
+            else
+            {
+                Debug.LogWarning("NewPlayerMove スクリプトが見つかりません！");
+            }
+        }
     }
 }
