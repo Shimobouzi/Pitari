@@ -26,6 +26,8 @@ public class TutorialUIManager : MonoBehaviour
     [Header("サウンド（AudioClip）")]
     public AudioClip walkClip;
     public AudioClip bubbleClip;
+    public AudioClip sitDownClip;
+
     private AudioSource audioSource;
 
     [Header("チュートリアル後の待機時間")]
@@ -38,6 +40,10 @@ public class TutorialUIManager : MonoBehaviour
 
     [Header("操作開始までの待機時間")]
     public float controlEnableDelay = 1.5f;
+
+    [Header("カメラ切り替え時に変更するオブジェクト")]
+    public GameObject objectToChange;
+    public bool setObjectActive = true;
 
     private int tutorialCount = 0;
 
@@ -106,6 +112,11 @@ public class TutorialUIManager : MonoBehaviour
                     audioSource.Stop();
                 }
 
+                if (sitDownClip != null)
+                {
+                    audioSource.PlayOneShot(sitDownClip);
+                }
+
                 StartCoroutine(ShowImageSequence());
             }
         }
@@ -146,8 +157,14 @@ public class TutorialUIManager : MonoBehaviour
     {
         Debug.Log("ゲーム本編スタート！");
 
-        if (tutorialCamera != null) tutorialCamera.enabled = false;
         if (playerCamera != null) playerCamera.enabled = true;
+        //if (tutorialCamera != null) tutorialCamera.enabled = false;
+
+        // 🎯 カメラ切り替え時にオブジェクトを変更
+        if (objectToChange != null)
+        {
+            objectToChange.SetActive(setObjectActive);
+        }
 
         StartCoroutine(EnablePlayerControlAfterDelay(controlEnableDelay));
     }
@@ -155,12 +172,14 @@ public class TutorialUIManager : MonoBehaviour
     IEnumerator EnablePlayerControlAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+        if (tutorialCamera != null) tutorialCamera.enabled = false;
+
+
 
         if (playerController != null)
         {
             playerController.SetActive(true);
 
-            // NewPlayerMove スクリプトを有効化
             var moveScript = playerController.GetComponent<NewPlayerMove>();
             if (moveScript != null)
             {

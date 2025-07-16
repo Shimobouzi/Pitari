@@ -15,18 +15,30 @@ public class IntroManager : MonoBehaviour
     private SpriteRenderer sr;
 
     [Header("足音設定")]
-    public AudioClip footstepClip1;
-    public AudioClip footstepClip2;
+    public AudioClip footstepClip;
     public float footstepInterval = 0.5f;
     public float footstepStartDelay = 17f;
 
+    [Header("座敷童設定")]
+    public bool isZashikiWarashi = false;
+    public float zashikiFootstepInterval = 1.2f;
+
+    [Header("追加効果音")]
+    public AudioClip startFootstepSound;
+    public AudioClip lookAroundSound;
+
+    [Header("音量設定（1.0以上で増幅可能）")]
+    public float footstepVolume = 1f;
+    public float startFootstepVolume = 1f;
+    public float lookAroundVolume = 1f;
+
     private AudioSource audioSource;
-    private bool useFirstClip = true;
     private float footstepTimer = 0f;
     private bool canPlayFootsteps = false;
+    private bool hasPlayedLookSound = false;
 
     [Header("非表示・音声停止設定")]
-    public float hideDelay = 32f; // 指定秒数後に非表示・停止
+    public float hideDelay = 32f;
 
     void Start()
     {
@@ -42,40 +54,37 @@ public class IntroManager : MonoBehaviour
         animator.SetBool("IsWalking", true);
 
         audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.playOnAwake = false;
 
-        // 足音再生許可（17秒後）
         Invoke("EnableFootsteps", footstepStartDelay);
-
-        // 指定秒数後に音声停止と非表示処理
         Invoke("StopAudioAndHide", hideDelay);
     }
 
     void EnableFootsteps()
     {
         canPlayFootsteps = true;
+
+        if (startFootstepSound != null)
+        {
+            audioSource.PlayOneShot(startFootstepSound, startFootstepVolume);
+        }
     }
 
     void StopAudioAndHide()
     {
-        // 足音停止
         canPlayFootsteps = false;
 
-        // 音声停止
         if (audioSource != null && audioSource.isPlaying)
         {
             audioSource.Stop();
         }
 
-        // アニメーション停止
         if (animator != null)
         {
             animator.SetBool("IsWalking", false);
         }
 
-        // オブジェクト非表示
         gameObject.SetActive(false);
-
-        // スクリプト停止
         enabled = false;
     }
 
@@ -108,10 +117,19 @@ public class IntroManager : MonoBehaviour
 
             case 2:
                 timer += Time.deltaTime;
-                if (state.IsName("look around") && state.normalizedTime >= 1f)
+                if (state.IsName("look around"))
                 {
-                    animator.SetBool("IsWalking", true);
-                    phase = 3;
+                    if (state.normalizedTime >= 0.4f && !hasPlayedLookSound && lookAroundSound != null)
+                    {
+                        audioSource.PlayOneShot(lookAroundSound, lookAroundVolume);
+                        hasPlayedLookSound = true;
+                    }
+
+                    if (state.normalizedTime >= 1f)
+                    {
+                        animator.SetBool("IsWalking", true);
+                        phase = 3;
+                    }
                 }
                 break;
 
@@ -126,12 +144,14 @@ public class IntroManager : MonoBehaviour
     {
         if (canPlayFootsteps && state.IsName("walk"))
         {
+            float currentInterval = isZashikiWarashi ? zashikiFootstepInterval : footstepInterval;
+
             footstepTimer += Time.deltaTime;
-            if (footstepTimer >= footstepInterval)
+            if (footstepTimer >= currentInterval)
             {
-                audioSource.clip = useFirstClip ? footstepClip1 : footstepClip2;
+                audioSource.volume = Mathf.Clamp(footstepVolume, 0f, 10f); // 安全のため上限を設ける
+                audioSource.clip = footstepClip;
                 audioSource.Play();
-                useFirstClip = !useFirstClip;
                 footstepTimer = 0f;
             }
         }
