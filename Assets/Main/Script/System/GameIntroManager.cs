@@ -1,81 +1,52 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameIntroSequence : MonoBehaviour
 {
-    [Header("プレイヤー関連")]
-    [Tooltip("ゲーム本編用のプレイヤーPrefab")]
-    public GameObject realPlayerPrefab;
+    [Header("チュートリアルUI管理")]
+    public TutorialUIManager tutorialUIManager; // チュートリアルUIを制御する共通のマネージャー
 
-    [Tooltip("プレイヤーの出現位置")]
-    public Transform playerSpawnPoint;
+    [Header("チュートリアル画像セット")]
+    public List<Sprite> firstTutorialSprites;   // 最初に表示するチュートリアル画像
+    public List<Sprite> secondTutorialSprites;  // 2回目に表示するチュートリアル画像
 
-    private GameObject spawnedPlayer;
-
-    [Header("カメラ関連")]
-    [Tooltip("通常のメインカメラ")]
-    public Camera mainCamera;
-
-    [Tooltip("カメラがプレイヤーを追いかけるオフセット")]
-    public Vector3 cameraOffset = new Vector3(0, 5, -10);
-
-    [Header("UI・演出関連")]
-    [Tooltip("狸の説明UI")]
-    public GameObject tanukiUI;
-
-    [Tooltip("UIやゲーム開始処理を管理するスクリプト")]
-    public TutorialUIManager tutorialUIManager;
+    [Header("表示タイミング（秒）")]
+    public float firstTutorialDelay = 1f;       // 最初のチュートリアル表示までの待機時間
+    public float secondTutorialDelay = 11f;     // 2回目のチュートリアル表示までの待機時間（全体の時間）
 
     void Start()
     {
-        // ゲーム開始時に演出シーケンスを開始
-        StartCoroutine(IntroSequence());
+        // ゲーム開始時にチュートリアル表示シーケンスを開始
+        StartCoroutine(ShowTutorialSequence());
     }
 
     /// <summary>
-    /// ゲーム開始からの演出を秒数で順番に実行する
+    /// チュートリアルを順番に表示するコルーチン
     /// </summary>
-    IEnumerator IntroSequence()
+    IEnumerator ShowTutorialSequence()
     {
-        // 必要に応じて前の演出をここに追加
+        // 1回目のチュートリアル表示まで待機
+        yield return new WaitForSeconds(firstTutorialDelay);
 
-        // 11秒後：プレイヤー出現とカメラ切り替え
-        yield return new WaitForSeconds(11f);
-        SpawnPlayerAndSwitchCamera();
+        // 最初の画像セットを設定して表示
+        tutorialUIManager.SetTutorialSprites(firstTutorialSprites);
+        tutorialUIManager.ShowTutorial();
 
-        // 12秒後：狸UIを再表示
-        yield return new WaitForSeconds(1f);
-        tanukiUI.SetActive(true);
+        // チュートリアルが閉じられるのを待つ
+        bool tutorialClosed = false;
+        TutorialUIManager.OnTutorialClosed += () => tutorialClosed = true;
+        yield return new WaitUntil(() => tutorialClosed);
 
-        // 15秒後：狸UIを非表示にしてゲーム開始
-        yield return new WaitForSeconds(3f);
-        tanukiUI.SetActive(false);
-        tutorialUIManager.StartGame();
+        // 2回目のチュートリアル表示までの残り時間を待機
+        tutorialClosed = false;
+        yield return new WaitForSeconds(secondTutorialDelay - firstTutorialDelay);
+
+        // 2回目の画像セットを設定して表示
+        tutorialUIManager.SetTutorialSprites(secondTutorialSprites);
+        tutorialUIManager.ShowTutorial();
+
+        // チュートリアルが閉じられるのを再度待つ
+        yield return new WaitUntil(() => tutorialClosed);
     }
-
-    /// <summary>
-    /// プレイヤーを生成し、カメラをそのプレイヤーに追従させる
-    /// </summary>
-    void SpawnPlayerAndSwitchCamera()
-    {
-        // プレイヤーを生成
-        spawnedPlayer = Instantiate(realPlayerPrefab, playerSpawnPoint.position, Quaternion.identity);
-
-        // カメラの追従を開始（Updateで追いかける）
-        StartCoroutine(FollowPlayer());
-    }
-
-    /// <summary>
-    /// カメラがプレイヤーを追いかける処理（毎フレーム更新）
-    /// </summary>
-    IEnumerator FollowPlayer()
-    {
-        while (spawnedPlayer != null)
-        {
-            Vector3 targetPosition = spawnedPlayer.transform.position + cameraOffset;
-            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, targetPosition, Time.deltaTime * 5f);
-            yield return null;
-        }
-    }
-
 }
