@@ -59,7 +59,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 397563025472848640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c2539182cae804fa85b5f7be732709, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b11854bbdd64d447894e4e0e10a9a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4784698008372230869
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   accelThreshold: 2.5
+  DashAT: 5
 --- !u!114 &5337403306747522061
 MonoBehaviour:
   m_ObjectHideFlags: 0

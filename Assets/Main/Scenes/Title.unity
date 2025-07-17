@@ -905,7 +905,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 630585469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47c2539182cae804fa85b5f7be732709, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b11854bbdd64d447894e4e0e10a9a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &630585475
@@ -958,7 +958,6 @@ MonoBehaviour:
   gameScrean: {fileID: 1596220859}
   smokeAnimator: {fileID: 8437118108937999251}
   smokeSound: {fileID: 8300000, guid: af256ed7e83f1ab4891dfb869bfde3cf, type: 3}
-  kemuri: {fileID: 8327878729929162652}
 --- !u!114 &630585478
 MonoBehaviour:
   m_ObjectHideFlags: 0
