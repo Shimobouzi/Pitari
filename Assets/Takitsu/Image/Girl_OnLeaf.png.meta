@@ -1,0 +1,389 @@
+fileFormatVersion: 2
+guid: e1e3d60356fe1134ea99caf160011c53
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8632014293800766548
+    second: Girl_OnLeaf_0
+  - first:
+      213: 351932021832229440
+    second: Girl_OnLeaf_1
+  - first:
+      213: 4459285801237871477
+    second: Girl_OnLeaf_2
+  - first:
+      213: 5492160561453601169
+    second: Girl_OnLeaf_3
+  - first:
+      213: -2825928862734644567
+    second: Girl_OnLeaf_4
+  - first:
+      213: 417954054065730532
+    second: Girl_OnLeaf_5
+  - first:
+      213: -2008020284615415007
+    second: Girl_OnLeaf_6
+  - first:
+      213: 2051679058938861717
+    second: Girl_OnLeaf_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Girl_OnLeaf_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1010
+        height: 1010
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      physicsShape:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f7e1a331c811664eb7bdd7cdeeb0c94
+      internalID: -432246510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Girl_OnLeaf_1
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 0
+        width: 1010
+        height: 1010
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      physicsShape:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83d49902a89bec847ae017d840d48d13
+      internalID: -1179579219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Girl_OnLeaf_2
+      rect:
+        serializedVersion: 2
+        x: 2020
+        y: 0
+        width: 1010
+        height: 1010
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      physicsShape:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab77cc19fd9c5f145a3e3d9780e382da
+      internalID: 1152299252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Girl_OnLeaf_3
+      rect:
+        serializedVersion: 2
+        x: 3030
+        y: 0
+        width: 1010
+        height: 1010
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      physicsShape:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3186da3c70d41284a866ddf3edcdf63a
+      internalID: 666389548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Girl_OnLeaf_4
+      rect:
+        serializedVersion: 2
+        x: 4040
+        y: 0
+        width: 1010
+        height: 1010
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      physicsShape:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73d01ccde33e3754b85e5c89d5776fde
+      internalID: -588438033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Girl_OnLeaf_5
+      rect:
+        serializedVersion: 2
+        x: 5050
+        y: 0
+        width: 1010
+        height: 1010
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      physicsShape:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 224ce0916b82ac347b5f63312828ca78
+      internalID: 876937005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Girl_OnLeaf_6
+      rect:
+        serializedVersion: 2
+        x: 6060
+        y: 0
+        width: 1010
+        height: 1010
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      physicsShape:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: c71952e5ae4e5ae4998d45b86d78a87b
+      internalID: -553557283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Girl_OnLeaf_7
+      rect:
+        serializedVersion: 2
+        x: 7070
+        y: 0
+        width: 1010
+        height: 1010
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      physicsShape:
+      - - {x: 0, y: -505}
+        - {x: 505, y: 0}
+        - {x: 0, y: 505}
+        - {x: -505, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71630d0172358b549884c371aa198292
+      internalID: -2023389253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 4c498e8873bb44a4b89b699a3e247780
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Girl_OnLeaf_0: -432246510
+      Girl_OnLeaf_1: -1179579219
+      Girl_OnLeaf_2: 1152299252
+      Girl_OnLeaf_3: 666389548
+      Girl_OnLeaf_4: -588438033
+      Girl_OnLeaf_5: 876937005
+      Girl_OnLeaf_6: -553557283
+      Girl_OnLeaf_7: -2023389253
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
