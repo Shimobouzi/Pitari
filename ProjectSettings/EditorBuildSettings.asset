@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Main/Scenes/Stage3.unity
     guid: 68bdb2140870be54caf6392a9eb1d4b7
+  - enabled: 1
+    path: Assets/Takitsu/Scene/Ending.unity
+    guid: e459fa2cc58a7fe479390280216f7062
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 04ac21b5a9e0b804497868f3f456796a, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
