@@ -1,9 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // シーン遷移に必要
+using UnityEngine.SceneManagement;
 
-/// <summary>
-/// プレイヤーを追いかける速鬼（接触でゲームオーバー）
-/// </summary>
 public class NewHayaoni_TypeB : MonoBehaviour
 {
     public Transform player;      // プレイヤーの位置
@@ -19,15 +16,18 @@ public class NewHayaoni_TypeB : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// プレイヤーに接触したらログを出してゲームオーバー画面へ遷移
-    /// </summary>
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("速鬼：プレイヤーと接触しました！");
-            Debug.Log("速鬼がプレイヤーに接触しました！ → ゲームオーバー");
+            Debug.Log("速鬼：プレイヤーと接触しました！ → ゲームオーバー");
+
+            // プレイヤーの Joy-Con を振動させる
+            var playerMove = other.transform.parent?.GetComponent<NewPlayerMove>();
+            if (playerMove != null)
+            {
+                playerMove.OnBuruBuru(); // 振動処理を呼び出す
+            }
 
             // ゲームオーバー画面に遷移
             SceneManager.LoadScene("Result");
