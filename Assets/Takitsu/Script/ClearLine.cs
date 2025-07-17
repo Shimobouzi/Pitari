@@ -5,32 +5,32 @@ using UnityEngine.Video;
 
 public class ClearLine : MonoBehaviour
 {
-	// ƒtƒF[ƒhƒAƒEƒg‚ÌƒAƒjƒ[ƒ^[
+	// ï¿½tï¿½Fï¿½[ï¿½hï¿½Aï¿½Eï¿½gï¿½ÌƒAï¿½jï¿½ï¿½ï¿½[ï¿½^ï¿½[
 	[SerializeField]
 	private Animator _fadeAnim;
 
-	// ƒtƒF[ƒh‚·‚é‚©‚µ‚È‚¢‚©
+	// ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½é‚©ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½
 	private bool _onFade = false;
 
-	// ƒfƒoƒbƒO—p
+	// ï¿½fï¿½oï¿½bï¿½Oï¿½p
 	// private float _pointOfset;
 
 
 	private void FixedUpdate()
 	{
-		// ƒfƒoƒbƒO—p
+		// ï¿½fï¿½oï¿½bï¿½Oï¿½p
 		//_pointOfset += 0.1f;
 
-		// ƒŒƒCƒLƒƒƒXƒg‚Ì“à—e
-		Vector3 origin = transform.position + Vector3.left * _pointOfset;
+		// ï¿½ï¿½ï¿½Cï¿½Lï¿½ï¿½ï¿½Xï¿½gï¿½Ì“ï¿½ï¿½e
+		Vector3 origin = transform.position + Vector3.left; //* _pointOfset;
 		Vector2 direction = Vector2.up;
 		float distance = 15.0f;
 
-		// ƒŒƒCƒLƒƒƒXƒg
+		// ï¿½ï¿½ï¿½Cï¿½Lï¿½ï¿½ï¿½Xï¿½g
 		RaycastHit2D hit = Physics2D.Raycast(origin, direction, distance);
 		Debug.DrawRay(origin, direction * distance, Color.magenta);
 
-		// –½’†
+		// ï¿½ï¿½ï¿½ï¿½
 		if (hit.transform.tag == "Player" && !_onFade)
 		{
 			_fadeAnim.SetTrigger("FadeOut");
