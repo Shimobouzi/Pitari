@@ -24,6 +24,7 @@ public class PitariSceneManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         AudioManager.StopBgm();
+        AudioManager.PlayBgm("bgmT");
         SceneManager.LoadScene("Title");
     }
 
@@ -48,6 +49,7 @@ public class PitariSceneManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         AudioManager.StopBgm();
+        AudioManager.PlayBgm("bgmE");
         SceneManager.LoadScene("Stage1");
     }
 
@@ -55,6 +57,7 @@ public class PitariSceneManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         AudioManager.StopBgm();
+        AudioManager.PlayBgm("bgmG");
         SceneManager.LoadScene("Stage2");
     }
 
@@ -62,6 +65,7 @@ public class PitariSceneManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         AudioManager.StopBgm();
+        AudioManager.PlayBgm("bgmJ");
         SceneManager.LoadScene("Stage3");
     }
 
