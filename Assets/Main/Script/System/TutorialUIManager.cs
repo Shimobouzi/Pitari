@@ -45,6 +45,9 @@ public class TutorialUIManager : MonoBehaviour
     public GameObject objectToChange;
     public bool setObjectActive = true;
 
+    [Header("オブジェクト表示の遅延時間")]
+    public float objectActivationDelay = 1.0f;
+
     private int tutorialCount = 0;
 
     void Start()
@@ -55,16 +58,6 @@ public class TutorialUIManager : MonoBehaviour
         tanuki.gameObject.SetActive(false);
 
         audioSource = gameObject.AddComponent<AudioSource>();
-
-        if (speechImage == null)
-        {
-            Debug.LogError("speechImage が設定されていません！");
-        }
-
-        if (tutorialSprites.Count == 0)
-        {
-            Debug.LogWarning("tutorialSprites に画像が登録されていません！");
-        }
 
         if (playerCamera != null) playerCamera.enabled = false;
         if (playerController != null) playerController.SetActive(false);
@@ -155,26 +148,26 @@ public class TutorialUIManager : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log("ゲーム本編スタート！");
-
         if (playerCamera != null) playerCamera.enabled = true;
-        //if (tutorialCamera != null) tutorialCamera.enabled = false;
 
-        // 🎯 カメラ切り替え時にオブジェクトを変更
         if (objectToChange != null)
         {
-            objectToChange.SetActive(setObjectActive);
+            StartCoroutine(ActivateObjectWithDelay(objectActivationDelay));
         }
 
         StartCoroutine(EnablePlayerControlAfterDelay(controlEnableDelay));
+    }
+
+    IEnumerator ActivateObjectWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        objectToChange.SetActive(setObjectActive);
     }
 
     IEnumerator EnablePlayerControlAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
         if (tutorialCamera != null) tutorialCamera.enabled = false;
-
-
 
         if (playerController != null)
         {
@@ -184,11 +177,6 @@ public class TutorialUIManager : MonoBehaviour
             if (moveScript != null)
             {
                 moveScript.enabled = true;
-                Debug.Log("NewPlayerMove が有効になりました！");
-            }
-            else
-            {
-                Debug.LogWarning("NewPlayerMove スクリプトが見つかりません！");
             }
         }
     }
