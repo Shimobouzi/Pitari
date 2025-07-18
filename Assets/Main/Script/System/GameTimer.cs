@@ -5,7 +5,7 @@ public class GameTimer : MonoBehaviour
     public static GameTimer instance;
 
     [SerializeField]
-    private float gameTime = 180f;
+    private float gameTime = 60f;
     private float passTime = 0f;
     private bool timerStarted = false;
 
