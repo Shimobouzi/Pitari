@@ -1,7 +1,7 @@
 // ------------------------------------------------------------------------------------------------
-// »ìÒ: ‘ë’Ã‰lå
-// »ì“ú: 2025/06/07
-// d—l@: “ü—Í‚ğŠeƒfƒoƒCƒX‚©‚çó‚¯æ‚èA“KØ‚È”»’è‚ğs‚¤
+// ï¿½ï¿½ï¿½ï¿½ï¿½: ï¿½ï¿½Ã‰lï¿½ï¿½
+// ï¿½ï¿½ï¿½ï¿½ï¿½: 2025/06/07
+// ï¿½dï¿½lï¿½@: ï¿½ï¿½ï¿½Í‚ï¿½ï¿½eï¿½fï¿½oï¿½Cï¿½Xï¿½ï¿½ï¿½ï¿½ó‚¯ï¿½ï¿½Aï¿½Kï¿½Ø‚È”ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½
 // ------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
@@ -11,141 +11,141 @@ using UnityEngine.UI;
 
 public class Input_Player : MonoBehaviour
 {
-	// •Ï”
+	// ï¿½Ïï¿½
 
-	// ƒVƒ“ƒOƒ‹ƒgƒ“	-------------------------------------------------------------------------------
+	// ï¿½Vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½gï¿½ï¿½	-------------------------------------------------------------------------------
 	private InputSystemAction _input;
 	public static Input_Player Instance;
 
-	// “ü—ÍŠJn‚µ‚½uŠÔ	---------------------------------------------------------------------------
-	// ‰EˆÚ“®
+	// ï¿½ï¿½ï¿½ÍŠJï¿½nï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½	---------------------------------------------------------------------------
+	// ï¿½Eï¿½Ú“ï¿½
 	private bool _rightMove_started;
 	public bool RightMove_Started => _rightMove_started;
-	// ¶ˆÚ“®
+	// ï¿½ï¿½ï¿½Ú“ï¿½
 	private bool _leftMove_started;
 	public bool LeftMove_Started => _leftMove_started;
-	// ‰Eƒ_ƒbƒVƒ…
+	// ï¿½Eï¿½_ï¿½bï¿½Vï¿½ï¿½
 	private bool _rightDash_started;
 	public bool RightDash_Started => _rightDash_started;
 
-	// “ü—Í‚µ‚Ä‚¢‚éŠÔ	-------------------------------------------------------------------------------
-	// ‰EˆÚ“®
+	// ï¿½ï¿½ï¿½Í‚ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½	-------------------------------------------------------------------------------
+	// ï¿½Eï¿½Ú“ï¿½
 	private bool _rightMove_performed;
 	public bool RightMove_performed => _rightMove_performed;
-	// ¶ˆÚ“®
+	// ï¿½ï¿½ï¿½Ú“ï¿½
 	private bool _leftMove_performed;
 	public bool LeftMove_Performed => _leftMove_performed;
-	// ‰Eƒ_ƒbƒVƒ…
+	// ï¿½Eï¿½_ï¿½bï¿½Vï¿½ï¿½
 	private bool _rightDash_performed;
 	public bool RightDash_Performed => _rightDash_performed;
 
-	// “ü—Í‰ğœ‚µ‚½uŠÔ	---------------------------------------------------------------------------
-	// ‰EˆÚ“®
+	// ï¿½ï¿½ï¿½Í‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½	---------------------------------------------------------------------------
+	// ï¿½Eï¿½Ú“ï¿½
 	private bool _rightMove_canceled;
 	public bool rightMove_Canceled => _rightMove_canceled;
-	// ¶ˆÚ“®
+	// ï¿½ï¿½ï¿½Ú“ï¿½
 	private bool _leftMove_canceled;
 	public bool LeftMove_Canceled => _leftMove_canceled;
-	// ‰Eƒ_ƒbƒVƒ…
+	// ï¿½Eï¿½_ï¿½bï¿½Vï¿½ï¿½
 	private bool _rightDash_canceled;
 	public bool RightDash_Canceled => _rightDash_canceled;
 
-	// ƒCƒxƒ“ƒgƒnƒ“ƒhƒ‰	---------------------------------------------------------------------------
-	// ‰EˆÚ“®
+	// ï¿½Cï¿½xï¿½ï¿½ï¿½gï¿½nï¿½ï¿½ï¿½hï¿½ï¿½	---------------------------------------------------------------------------
+	// ï¿½Eï¿½Ú“ï¿½
 	private void OnRightMove_started(InputAction.CallbackContext ctx) => _rightMove_started = true;
 	private void OnRightMove_canceled(InputAction.CallbackContext ctx) => _rightMove_canceled = true;
-	// ¶ˆÚ“®
+	// ï¿½ï¿½ï¿½Ú“ï¿½
 	private void OnLeftMove_started(InputAction.CallbackContext ctx) => _leftMove_started = true;
 	private void OnLeftMove_canceled(InputAction.CallbackContext ctx) => _leftMove_canceled = true;
-	// ‰Eƒ_ƒbƒVƒ…
+	// ï¿½Eï¿½_ï¿½bï¿½Vï¿½ï¿½
 	private void OnRightDash_started(InputAction.CallbackContext ctx) => _rightDash_started = true;
 	private void OnRightDash_canceled(InputAction.CallbackContext ctx) => _rightDash_canceled = true;
 
-	// 1ŸŒ³“I“ü—Í	-------------------------------------------------------------------------------
-	// ƒRƒ“ƒgƒ[ƒ‰[‚Ì~ƒ{ƒ^ƒ“
+	// 1ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½	-------------------------------------------------------------------------------
+	// ï¿½Rï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½Ì~ï¿½{ï¿½^ï¿½ï¿½
 	private bool _gamepadSouthButton = false;
 
-	// 2,3ŸŒ³“I“ü—Í	-------------------------------------------------------------------------------
-	// ƒRƒ“ƒgƒ[ƒ‰[‚Ì¶ƒXƒeƒBƒbƒN
+	// 2,3ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½	-------------------------------------------------------------------------------
+	// ï¿½Rï¿½ï¿½ï¿½gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½Ìï¿½ï¿½Xï¿½eï¿½Bï¿½bï¿½N
 	private Vector2 _gamepadLeftStick = Vector2.zero;
-	// Joy-con‚Ì¶‰Á‘¬“x
+	// Joy-conï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½x
 	private Vector3 _joyconLeftAccel = Vector3.zero;
 
-	// §Œä•Ï”	-----------------------------------------------------------------------------------
-	// ‰EˆÚ“®’†‚Ì‘€ìƒfƒoƒCƒX
+	// ï¿½ï¿½ï¿½ï¿½Ïï¿½	-----------------------------------------------------------------------------------
+	// ï¿½Eï¿½Ú“ï¿½ï¿½ï¿½ï¿½Ì‘ï¿½ï¿½ï¿½fï¿½oï¿½Cï¿½X
 	bool _rightMove_vec2 = false;
 	bool _rightMove_vec3 = false;
 	bool _rightMove_button = false;
-	// ‰EˆÚ“®’†‚Ì‘€ìƒfƒoƒCƒX
+	// ï¿½Eï¿½Ú“ï¿½ï¿½ï¿½ï¿½Ì‘ï¿½ï¿½ï¿½fï¿½oï¿½Cï¿½X
 	bool _leftMove_vec2 = false;
 	bool _leftMove_button = false;
-	// ‰EˆÚ“®’†‚Ì‘€ìƒfƒoƒCƒX
+	// ï¿½Eï¿½Ú“ï¿½ï¿½ï¿½ï¿½Ì‘ï¿½ï¿½ï¿½fï¿½oï¿½Cï¿½X
 	bool _rightDash_vec2 = false;
 	bool _rightDash_vec3 = false;
 	bool _rightDash_button = false;
-	// ”»’èŒp‘±‚Ìc‚èŠÔ
+	// ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½Ìcï¿½èï¿½ï¿½
 	private float _accelTime = 0.0f;
 
-	// ˆÚ“®‚·‚é‚Ì‚É•K—v‚ÈƒXƒeƒBƒbƒN‚ÌŒX‚«
+	// ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚É•Kï¿½vï¿½ÈƒXï¿½eï¿½Bï¿½bï¿½Nï¿½ÌŒXï¿½ï¿½
 	private const float _RIGHTMOVE_STICKVALUE = 0.0f;
-	// ˆÚ“®‚·‚é‚Ì‚É•K—v‚È‰Á‘¬“x
+	// ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚É•Kï¿½vï¿½È‰ï¿½ï¿½ï¿½ï¿½x
 	private const float _RIGHTMOVE_ACCELVALUE = 0.33f;
-	// ƒ_ƒbƒVƒ…‚·‚é‚Ì‚É•K—v‚È‰Á‘¬“x
+	// ï¿½_ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚É•Kï¿½vï¿½È‰ï¿½ï¿½ï¿½ï¿½x
 	private const float _RIGHTDASH_ACCELVALUE = 2.5f;
-	// ”»’èŒp‘±ŠÔ
+	// ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private const float _RIGHTMOVE_ACCELTIME = 0.08f;
 
 	// Joy-Con	-----------------------------------------------------------------------------------
-	// Joy-ConƒŠƒXƒgi•¡”Ú‘±‚³‚ê‚½Joy-Con‚Ìî•ñj
+	// Joy-Conï¿½ï¿½ï¿½Xï¿½gï¿½iï¿½ï¿½ï¿½ï¿½ï¿½Ú‘ï¿½ï¿½ï¿½ï¿½ê‚½Joy-Conï¿½Ìï¿½ï¿½j
 	private List<Joycon> _joycons;
-	// Joy-Con¶
+	// Joy-Conï¿½ï¿½
 	private Joycon _joyconL;
 
 
 
-	// ŠÖ”
+	// ï¿½Öï¿½
 
 	/// <summary>
-	/// ƒ{ƒ^ƒ““ü—Í‚É‚æ‚é‘€ì‚ğó‚¯•t‚¯‚é
+	/// ï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½Í‚É‚ï¿½é‘€ï¿½ï¿½ï¿½ï¿½ó‚¯•tï¿½ï¿½ï¿½ï¿½
 	/// </summary>
 	public void Action_Button()
 	{
-		// ‰EˆÚ“®	-------------------------------------------------------------------------------
-		// “ü—ÍŠJn
+		// ï¿½Eï¿½Ú“ï¿½	-------------------------------------------------------------------------------
+		// ï¿½ï¿½ï¿½ÍŠJï¿½n
 		if (_rightMove_started)
 		{
 			_rightMove_started = false;
 			_rightMove_button = true;
 		}
-		// “ü—Í‰ğœ
+		// ï¿½ï¿½ï¿½Í‰ï¿½ï¿½ï¿½
 		else if (_rightMove_canceled)
 		{
 			_rightMove_canceled = false;
 			_rightMove_button = false;
 		}
 
-		// ¶ˆÚ“®	-------------------------------------------------------------------------------
-		// “ü—ÍŠJn
+		// ï¿½ï¿½ï¿½Ú“ï¿½	-------------------------------------------------------------------------------
+		// ï¿½ï¿½ï¿½ÍŠJï¿½n
 		if (_leftMove_started)
 		{
 			_leftMove_started = false;
 			_leftMove_button = true;
 		}
-		// “ü—Í‰ğœ
+		// ï¿½ï¿½ï¿½Í‰ï¿½ï¿½ï¿½
 		if (_leftMove_canceled)
 		{
 			_leftMove_canceled = false;
 			_leftMove_button = false;
 		}
 
-		// ‰Eƒ_ƒbƒVƒ…	---------------------------------------------------------------------------
-		// “ü—ÍŠJn
+		// ï¿½Eï¿½_ï¿½bï¿½Vï¿½ï¿½	---------------------------------------------------------------------------
+		// ï¿½ï¿½ï¿½ÍŠJï¿½n
 		if (_rightDash_started)
 		{
 			_rightDash_started = false;
 			_rightDash_button = true;
 		}
-		// “ü—Í‰ğœ
+		// ï¿½ï¿½ï¿½Í‰ï¿½ï¿½ï¿½
 		else if (_rightDash_canceled)
 		{
 			_rightDash_canceled = false;
@@ -154,12 +154,12 @@ public class Input_Player : MonoBehaviour
 	}
 
 	/// <summary>
-	/// 2ŸŒ³“I“ü—Í(ƒXƒeƒBƒbƒN“™)‚É‚æ‚é‘€ì‚ğó‚¯•t‚¯‚é
+	/// 2ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½(ï¿½Xï¿½eï¿½Bï¿½bï¿½Nï¿½ï¿½)ï¿½É‚ï¿½é‘€ï¿½ï¿½ï¿½ï¿½ó‚¯•tï¿½ï¿½ï¿½ï¿½
 	/// </summary>
 	private void Action_Vec2()
 	{
-		// ‰EˆÚ“®	-------------------------------------------------------------------------------
-		// ˆê’è’l‚Ü‚ÅƒXƒeƒBƒbƒN‚ªŒX‚¢‚Ä‚¢‚é
+		// ï¿½Eï¿½Ú“ï¿½	-------------------------------------------------------------------------------
+		// ï¿½ï¿½ï¿½lï¿½Ü‚ÅƒXï¿½eï¿½Bï¿½bï¿½Nï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
 		if (_gamepadLeftStick.x > _RIGHTMOVE_STICKVALUE && !_gamepadSouthButton)
 		{
 			_rightMove_vec2 = true;
@@ -169,8 +169,8 @@ public class Input_Player : MonoBehaviour
 			_rightMove_vec2 = false;
 		}
 
-		// ¶ˆÚ“®	-------------------------------------------------------------------------------
-		// ˆê’è’l‚Ü‚ÅƒXƒeƒBƒbƒN‚ªŒX‚¢‚Ä‚¢‚é
+		// ï¿½ï¿½ï¿½Ú“ï¿½	-------------------------------------------------------------------------------
+		// ï¿½ï¿½ï¿½lï¿½Ü‚ÅƒXï¿½eï¿½Bï¿½bï¿½Nï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
 		if (_gamepadLeftStick.x < -_RIGHTMOVE_STICKVALUE)
 		{
 			_leftMove_vec2 = true;
@@ -180,8 +180,8 @@ public class Input_Player : MonoBehaviour
 			_leftMove_vec2 = false;
 		}
 
-		// ‰Eƒ_ƒbƒVƒ…	---------------------------------------------------------------------------
-		// ˆê’è’l‚Ü‚ÅƒXƒeƒBƒbƒN‚ªŒX‚¢‚Ä‚¢‚é
+		// ï¿½Eï¿½_ï¿½bï¿½Vï¿½ï¿½	---------------------------------------------------------------------------
+		// ï¿½ï¿½ï¿½lï¿½Ü‚ÅƒXï¿½eï¿½Bï¿½bï¿½Nï¿½ï¿½ï¿½Xï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
 		if (_gamepadLeftStick.x > _RIGHTMOVE_STICKVALUE && _gamepadSouthButton)
 		{
 			_rightDash_vec2 = true;
@@ -193,15 +193,15 @@ public class Input_Player : MonoBehaviour
 	}
 
 	/// <summary>
-	/// 2ŸŒ³“I“ü—Í(Joycon‰Á‘¬“x“™)‚É‚æ‚é‘€ì‚ğó‚¯•t‚¯‚é
+	/// 2ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½(Joyconï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½)ï¿½É‚ï¿½é‘€ï¿½ï¿½ï¿½ï¿½ó‚¯•tï¿½ï¿½ï¿½ï¿½
 	/// </summary>
 	private void Action_Vec3()
 	{
-		// Joy-conL‚Ì‰Á‘¬“x‚ğâ‘Î’l‚É
+		// Joy-conLï¿½Ì‰ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½Î’lï¿½ï¿½
 		Vector3 joyconAccel = AbsoluteVec3(_joyconLeftAccel);
 
-		// ‰EˆÚ“®	-------------------------------------------------------------------------------
-		// ‚¢‚¸‚ê‚©‚Ì²‚Ì‰Á‘¬“x‚ªˆê’èˆÈã‚©‚ÂA‰Eƒ_ƒbƒVƒ…’†‚Å‚È‚¢ê‡
+		// ï¿½Eï¿½Ú“ï¿½	-------------------------------------------------------------------------------
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ê‚©ï¿½Ìï¿½ï¿½Ì‰ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½Èã‚©ï¿½ÂAï¿½Eï¿½_ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Å‚È‚ï¿½ï¿½ê‡
 		if ((((joyconAccel.x > _RIGHTMOVE_ACCELVALUE && joyconAccel.x < _RIGHTDASH_ACCELVALUE) ||
 			  (joyconAccel.y > _RIGHTMOVE_ACCELVALUE && joyconAccel.y < _RIGHTDASH_ACCELVALUE) ||
 			  (joyconAccel.z > _RIGHTMOVE_ACCELVALUE && joyconAccel.z < _RIGHTDASH_ACCELVALUE)) && !_rightDash_vec3))
@@ -211,8 +211,8 @@ public class Input_Player : MonoBehaviour
 			_accelTime = _RIGHTMOVE_ACCELTIME;
 		}
 
-		// ‰Eƒ_ƒbƒVƒ…	---------------------------------------------------------------------------
-		// ‚¢‚¸‚ê‚©‚Ì²‚Ì‰Á‘¬“x‚ªˆê’èˆÈã‚Ìê‡
+		// ï¿½Eï¿½_ï¿½bï¿½Vï¿½ï¿½	---------------------------------------------------------------------------
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ê‚©ï¿½Ìï¿½ï¿½Ì‰ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½Èï¿½Ìê‡
 		else if (joyconAccel.x >= _RIGHTDASH_ACCELVALUE ||
 				 joyconAccel.y >= _RIGHTDASH_ACCELVALUE ||
 				 joyconAccel.z >= _RIGHTDASH_ACCELVALUE)
@@ -222,7 +222,7 @@ public class Input_Player : MonoBehaviour
 			_accelTime = _RIGHTMOVE_ACCELTIME;
 		}
 
-		// ‰Á‘¬“x‚Ìƒ€ƒ‰‚É‚æ‚é‰e‹¿‚ğŒyŒ¸‚·‚é
+		// ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½Ìƒï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if (_accelTime > 0)
 		{
 			_accelTime -= Time.deltaTime;
@@ -236,82 +236,82 @@ public class Input_Player : MonoBehaviour
 	}
 
 	/// <summary>
-	/// ƒAƒNƒVƒ‡ƒ“‚ğ—LŒø‚É‚·‚é
+	/// ï¿½Aï¿½Nï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½
 	/// </summary>
 	private void Action()
 	{
-		// ‰EˆÚ“®
+		// ï¿½Eï¿½Ú“ï¿½
 		_rightMove_performed = _rightMove_button || _rightMove_vec2 || _rightMove_vec3;
-		// ¶ˆÚ“®
+		// ï¿½ï¿½ï¿½Ú“ï¿½
 		_leftMove_performed = _leftMove_button || _leftMove_vec2;
-		// ‰Eƒ_ƒbƒVƒ…
+		// ï¿½Eï¿½_ï¿½bï¿½Vï¿½ï¿½
 		_rightDash_performed = _rightDash_button || _rightDash_vec2 || _rightDash_vec3;
 	}
 
 	/// <summary>
-	/// ŠO•”ƒfƒoƒCƒX‚Ì“ü—Íî•ñ‚ğæ“¾‚·‚é
+	/// ï¿½Oï¿½ï¿½ï¿½fï¿½oï¿½Cï¿½Xï¿½Ì“ï¿½ï¿½Íï¿½ï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	/// </summary>
 	private void GetInput()
 	{
-		// ƒQ[ƒ€ƒpƒbƒhLƒXƒeƒBƒbƒN
+		// ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hLï¿½Xï¿½eï¿½Bï¿½bï¿½N
 		if (Gamepad.all.Count > 0) _gamepadLeftStick = Gamepad.current.leftStick.ReadValue();
-		// ƒQ[ƒ€ƒpƒbƒh~ƒ{ƒ^ƒ“
+		// ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½~ï¿½{ï¿½^ï¿½ï¿½
 		if (Gamepad.all.Count > 0) _gamepadSouthButton = Gamepad.current.buttonSouth.isPressed;
 
-		// Joy-conL‰Á‘¬“x
+		// Joy-conLï¿½ï¿½ï¿½ï¿½ï¿½x
 		if (_joycons.Count > 0) _joyconLeftAccel = _joyconL.GetAccel();
 
-		// Joy-con‚Ì‰Á‘¬“x‚ğ³í‚É–ß‚·‚½‚ß‚ÌƒIƒtƒZƒbƒg
+		// Joy-conï¿½Ì‰ï¿½ï¿½ï¿½ï¿½xï¿½ğ³ï¿½É–ß‚ï¿½ï¿½ï¿½ï¿½ß‚ÌƒIï¿½tï¿½Zï¿½bï¿½g
 		Vector3 ofset = Vector3.zero;
-		// x²
+		// xï¿½ï¿½
 		if (_joyconLeftAccel.x > 1.0f) ofset.x = 1.0f;
 		else if (_joyconLeftAccel.x < -1.0f) ofset.x = -1.0f;
 		else ofset.x = _joyconLeftAccel.x;
-		// y²
+		// yï¿½ï¿½
 		if (_joyconLeftAccel.y > 1.0f) ofset.y = 1.0f;
 		else if (_joyconLeftAccel.y < -1.0f) ofset.y = -1.0f;
 		else ofset.y = _joyconLeftAccel.y;
-		// z²
+		// zï¿½ï¿½
 		if (_joyconLeftAccel.z > 1.0f) ofset.z = 1.0f;
 		else if (_joyconLeftAccel.z < -1.0f) ofset.z = -1.0f;
 		else ofset.z = _joyconLeftAccel.z;
-		// “‡
+		// ï¿½ï¿½ï¿½ï¿½
 		_joyconLeftAccel -= ofset;
 	}
 
 	/// <summary>
-	/// Ú‘±‚³‚ê‚½JoyCon‚ğæ“¾‚·‚é
+	/// ï¿½Ú‘ï¿½ï¿½ï¿½ï¿½ê‚½JoyConï¿½ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
 	/// </summary>
 	private void FindJoycon()
 	{
-		// Joy-Con‚ÌƒŠƒXƒg‚ğæ“¾
+		// Joy-Conï¿½Ìƒï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½æ“¾
 		_joycons = JoyconManager.Instance.j;
 
-		// Joycon‚ğÚ‘±‚·‚é
+		// Joyconï¿½ï¿½Ú‘ï¿½ï¿½ï¿½ï¿½ï¿½
 		if (_joycons.Count > 0)
 		{
 			_joyconL = _joycons[0];
-			Debug.Log("Joy-Con‚ªÚ‘±‚³‚ê‚Ü‚µ‚½B");
+			Debug.Log("Joy-Conï¿½ï¿½ï¿½Ú‘ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½ï¿½B");
 
 		}
 		else
 		{
-			Debug.LogWarning("Joy-Con‚ªÚ‘±‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+			Debug.LogWarning("Joy-Conï¿½ï¿½ï¿½Ú‘ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½B");
 		}
 
-		// Debug: ƒQ[ƒ€ƒpƒbƒh‚ÌÚ‘±‚ğŠm”F‚·‚é
+		// Debug: ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½ÌÚ‘ï¿½ï¿½ï¿½ï¿½mï¿½Fï¿½ï¿½ï¿½ï¿½
 		if (Gamepad.all.Count > 0)
 		{
-			Debug.Log("ƒQ[ƒ€ƒpƒbƒh‚ªÚ‘±‚³‚ê‚Ü‚µ‚½B");
+			Debug.Log("ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½ï¿½ï¿½Ú‘ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½ï¿½B");
 		}
 		else
 		{
-			Debug.LogWarning("ƒQ[ƒ€ƒpƒbƒh‚ªÚ‘±‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+			Debug.LogWarning("ï¿½Qï¿½[ï¿½ï¿½ï¿½pï¿½bï¿½hï¿½ï¿½ï¿½Ú‘ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½B");
 		}
 	}
 
 	/// <summary>
-	/// w’è‚µ‚½Vector3Œ^‚Ì•Ï”‚Ìâ‘Î’l‚ğo—Í‚·‚é
+	/// ï¿½wï¿½è‚µï¿½ï¿½Vector3ï¿½^ï¿½Ì•Ïï¿½ï¿½Ìï¿½Î’lï¿½ï¿½ï¿½oï¿½Í‚ï¿½ï¿½ï¿½
 	/// </summary>
 	/// <returns></returns>
 	private Vector3 AbsoluteVec3(Vector3 vec3)
@@ -324,7 +324,7 @@ public class Input_Player : MonoBehaviour
 	}
 
 	/// <summary>
-	/// ƒfƒoƒbƒO
+	/// ï¿½fï¿½oï¿½bï¿½O
 	/// </summary>
 	public void PrintText_GamepadLstick(Text text)
 	{
@@ -337,7 +337,7 @@ public class Input_Player : MonoBehaviour
 	}
 
 	/// <summary>
-	/// ƒfƒoƒbƒO
+	/// ï¿½fï¿½oï¿½bï¿½O
 	/// </summary>
 	public void PrintText_JoyconLaccel(Text text)
 	{
@@ -357,7 +357,7 @@ public class Input_Player : MonoBehaviour
 	{
 		_input = new InputSystemAction();
 
-		// ƒVƒ“ƒOƒ‹ƒgƒ“‚Ìì¬
+		// ï¿½Vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½gï¿½ï¿½ï¿½Ìì¬
 		if (Instance == null)
 		{
 			Instance = this;
@@ -385,15 +385,15 @@ public class Input_Player : MonoBehaviour
 	{
 		_input.Enable();
 
-		// ‰EˆÚ“®
+		// ï¿½Eï¿½Ú“ï¿½
 		_input.Player.RightMove.started += OnRightMove_started;
 		_input.Player.RightMove.canceled += OnRightMove_canceled;
 
-		// ¶ˆÚ“®
+		// ï¿½ï¿½ï¿½Ú“ï¿½
 		_input.Player.LeftMove.started += OnLeftMove_started;
 		_input.Player.LeftMove.canceled += OnLeftMove_canceled;
 
-		// ‰Eƒ_ƒbƒVƒ…
+		// ï¿½Eï¿½_ï¿½bï¿½Vï¿½ï¿½
 		_input.Player.RightDash.started += OnRightDash_started;
 		_input.Player.RightDash.canceled += OnRightDash_canceled;
 	}
@@ -403,15 +403,15 @@ public class Input_Player : MonoBehaviour
 	{
 		_input.Disable();
 
-		// ‰EˆÚ“®
+		// ï¿½Eï¿½Ú“ï¿½
 		_input.Player.RightMove.started -= OnRightMove_started;
 		_input.Player.RightMove.canceled -= OnRightMove_canceled;
 
-		// ¶ˆÚ“®
+		// ï¿½ï¿½ï¿½Ú“ï¿½
 		_input.Player.LeftMove.started -= OnLeftMove_started;
 		_input.Player.LeftMove.canceled -= OnLeftMove_canceled;
 
-		// ‰Eƒ_ƒbƒVƒ…
+		// ï¿½Eï¿½_ï¿½bï¿½Vï¿½ï¿½
 		_input.Player.RightDash.started -= OnRightDash_started;
 		_input.Player.RightDash.canceled -= OnRightDash_canceled;
 	}

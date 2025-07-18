@@ -624,6 +624,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+  footstep1: {fileID: 8300000, guid: 8a70bc90624a8f140b5b26e6cac66495, type: 3}
+  footstep2: {fileID: 8300000, guid: 634a183341c941a47a7df63bad259f39, type: 3}
+  footstepInterval: 0.5
 --- !u!1 &5444340854731447936
 GameObject:
   m_ObjectHideFlags: 0

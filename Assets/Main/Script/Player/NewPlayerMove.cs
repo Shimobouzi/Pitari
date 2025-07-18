@@ -5,47 +5,47 @@ using UnityEngine.Rendering;
 public class NewPlayerMove : MonoBehaviour
 {
     // ==========================
-    // ¥ İ’è€–ÚiƒCƒ“ƒXƒyƒNƒ^[‚Å’²®‰Â”\j
+    // ï¿½ï¿½ ï¿½İ’è€ï¿½Úiï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½Å’ï¿½ï¿½ï¿½ï¿½Â”\ï¿½j
     // ==========================
-    [Header("ˆÚ“®İ’è")]
-    [Tooltip("’Êí‚ÌˆÚ“®‘¬“x")]
+    [Header("ï¿½Ú“ï¿½ï¿½İ’ï¿½")]
+    [Tooltip("ï¿½Êï¿½ÌˆÚ“ï¿½ï¿½ï¿½ï¿½x")]
     [SerializeField] private float moveSpeed = 0.01f;
 
-    [Header("‹[‘Ôİ’è")]
-    [Tooltip("‹[‘Ôiƒ‚ƒm‚É•Ïgj‚·‚é‚Ü‚Å‚Ì’x‰„ŠÔ")]
+    [Header("ï¿½[ï¿½Ôİ’ï¿½")]
+    [Tooltip("ï¿½[ï¿½Ôiï¿½ï¿½ï¿½mï¿½É•Ïgï¿½jï¿½ï¿½ï¿½ï¿½Ü‚Å‚Ì’xï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private float hideDelay = 0.3f;
 
-    [Tooltip("l‚ÌŒ©‚½–ÚƒIƒuƒWƒFƒNƒg")]
+    [Tooltip("ï¿½lï¿½ÌŒï¿½ï¿½ï¿½ï¿½ÚƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½g")]
     [SerializeField] private GameObject People;
 
-    [Tooltip("ƒ‚ƒm‚ÌŒ©‚½–ÚƒIƒuƒWƒFƒNƒg")]
+    [Tooltip("ï¿½ï¿½ï¿½mï¿½ÌŒï¿½ï¿½ï¿½ï¿½ÚƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½g")]
     [SerializeField] private GameObject Object;
 
-    [Tooltip("•Ïg‚ÌƒGƒtƒFƒNƒg")]
+    [Tooltip("ï¿½Ïgï¿½ï¿½ï¿½ÌƒGï¿½tï¿½Fï¿½Nï¿½g")]
     [SerializeField] private GameObject Effect;
 
 
     // ==========================
-    // ¥ “à•”•Ï”
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïï¿½
     // ==========================
 
-    private Animator p_animator;           // ƒAƒjƒ[ƒ^[
-    private float MoveSpeed;               // ‰ŠúˆÚ“®‘¬“x
-    private bool isMoving = false;         // Œ»İˆÚ“®’†‚©‚Ç‚¤‚©
-    private bool isHiding = false;         // ‹[‘Ô’†‚©‚Ç‚¤‚©
-    private bool isFirst = true;           // ‰‰ñˆÚ“®‚©‚Ç‚¤‚©
-    //private bool isDashing = false;        // ƒ_ƒbƒVƒ…ó‘Ô‚©‚Ç‚¤‚©
+    private Animator p_animator;           // ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½^ï¿½[
+    private float MoveSpeed;               // ï¿½ï¿½ï¿½ï¿½ï¿½Ú“ï¿½ï¿½ï¿½ï¿½x
+    private bool isMoving = false;         // ï¿½ï¿½ï¿½İˆÚ“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½
+    private bool isHiding = false;         // ï¿½[ï¿½Ô’ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½
+    private bool isFirst = true;           // ï¿½ï¿½ï¿½ï¿½Ú“ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½
+    //private bool isDashing = false;        // ï¿½_ï¿½bï¿½Vï¿½ï¿½ï¿½ï¿½Ô‚ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½
 
 
     // ==========================
-    // ¥ ‰Šú‰»
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     // ==========================
     void Start()
     {
         MoveSpeed = moveSpeed;
         p_animator = GetComponent<Animator>();
 
-        // ‰Šúó‘ÔFl‚Ìp‚ÅƒXƒ^[ƒg
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÔFï¿½lï¿½Ìpï¿½ÅƒXï¿½^ï¿½[ï¿½g
         People.SetActive(true);
         Object.SetActive(false);
         Effect.SetActive(false);
@@ -73,7 +73,7 @@ public class NewPlayerMove : MonoBehaviour
                 isMoving = true;
                 StartCoroutine(DontHidePlayer());
             }
-            Debug.Log("‰EˆÚ“®");
+            Debug.Log("ï¿½Eï¿½Ú“ï¿½");
             transform.position += Vector3.right * MoveSpeed;
         }else if (isRun)
         {
@@ -83,7 +83,7 @@ public class NewPlayerMove : MonoBehaviour
                 isMoving = true;
                 StartCoroutine(DontHidePlayer());
             }
-            Debug.Log("‰Eƒ_ƒbƒVƒ…ˆÚ“®");
+            Debug.Log("ï¿½Eï¿½_ï¿½bï¿½Vï¿½ï¿½ï¿½Ú“ï¿½");
             transform.position += Vector3.right * MoveSpeed * 1.3f;
         }
         else
@@ -98,7 +98,7 @@ public class NewPlayerMove : MonoBehaviour
     }
 
     // ==========================
-    // ¥ ƒ‚ƒm‚É‹[‘Ô‚·‚éˆ—
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½mï¿½É‹[ï¿½Ô‚ï¿½ï¿½éˆï¿½ï¿½
     // ==========================
     IEnumerator HidePlayer()
     {
@@ -114,7 +114,7 @@ public class NewPlayerMove : MonoBehaviour
     }
 
     // ==========================
-    // ¥ l‚É–ß‚éˆ—
+    // ï¿½ï¿½ ï¿½lï¿½É–ß‚éˆï¿½ï¿½
     // ==========================
     IEnumerator DontHidePlayer()
     {
@@ -132,7 +132,7 @@ public class NewPlayerMove : MonoBehaviour
     }
 
     // ==========================
-    // ¥ “G‚É“–‚½‚Á‚½‚Æ‚«‚Ìˆ—
+    // ï¿½ï¿½ ï¿½Gï¿½É“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Ìï¿½ï¿½ï¿½
     // ==========================
     public void OnBuruBuru()
     {
@@ -140,7 +140,7 @@ public class NewPlayerMove : MonoBehaviour
     }
 
     // ==========================
-    // ¥ ŠO•”‚©‚ç‹[‘Ôó‘Ô‚ğæ“¾‚·‚é
+    // ï¿½ï¿½ ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½Ôï¿½Ô‚ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
     // ==========================
     public bool GetisHiding()
     {

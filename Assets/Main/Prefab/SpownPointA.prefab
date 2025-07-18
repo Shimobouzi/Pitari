@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5076345282818315695}
   - component: {fileID: 8724955940639201911}
   m_Layer: 0
-  m_Name: SpownPoint
+  m_Name: SpownPointA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,5 +147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 930564a8fb41729479904850401c5c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPrefab: {fileID: 0}
-  _player: {fileID: 0}
+  _enemyPrefab: {fileID: 5261464245385663067, guid: f209fc2f551daf84fa1bfbd8b5ff07bb, type: 3}
+  _player: {fileID: 6407684206687644395, guid: daa33790c7fa7e74e9e637db04a877e5, type: 3}
