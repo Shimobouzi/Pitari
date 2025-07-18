@@ -144,7 +144,7 @@ public class NewHayaoni_TypeA : MonoBehaviour
             var playerMove = other.transform.parent.GetComponent<NewPlayerMove>();
             if (playerMove != null)
             {
-                playerMove.OnBuruBuru();
+                //playerMove.OnBuruBuru();
                 Debug.Log("速鬼：プレイヤーと接触しました！");
 
                 if (!playerMove.GetisHiding())

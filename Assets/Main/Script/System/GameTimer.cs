@@ -3,31 +3,31 @@ using UnityEngine;
 public class GameTimer : MonoBehaviour
 {
     public static GameTimer instance;
-    
+
     [SerializeField]
-    private float gameTime = 180;
-    private float passTime;
-    private float meltTime;
+    private float gameTime = 180f;
+    private float passTime = 0f;
+    private bool timerStarted = false;
 
     private void Awake()
     {
         instance = this;
     }
-    void Start()
-    {
-        passTime = 0f;
-    }
 
-    // Update is called once per frame
     void Update()
     {
-        passTime += Time.deltaTime; 
+        if (!timerStarted) return;
+
+        passTime += Time.deltaTime;
+    }
+
+    public void StartTimer()
+    {
+        timerStarted = true;
     }
 
     public float GetMeltTime()
     {
         return (gameTime - passTime) / gameTime;
     }
-
-
 }

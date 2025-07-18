@@ -5,66 +5,65 @@ using UnityEngine.Rendering;
 public class NewPlayerMove : MonoBehaviour
 {
     // ==========================
-    // �� �ݒ荀�ځi�C���X�y�N�^�[�Œ����\�j
+    // ■ 設定項目（インスペクターで調整可能）
     // ==========================
-    [Header("�ړ��ݒ�")]
-    [Tooltip("�ʏ�̈ړ����x")]
+    [Header("移動設定")]
+    [Tooltip("通常の移動速度")]
     [SerializeField] private float moveSpeed = 0.01f;
 
-    [Header("�[�Ԑݒ�")]
-    [Tooltip("�[�ԁi���m�ɕϐg�j����܂ł̒x������")]
+    [Header("擬態設定")]
+    [Tooltip("擬態（物陰に隠れる）までの待機時間")]
     [SerializeField] private float hideDelay = 0.3f;
 
-    [Tooltip("�l�̌����ڃI�u�W�F�N�g")]
+    [Tooltip("人の見た目のオブジェクト")]
     [SerializeField] private GameObject People;
 
-    [Tooltip("���m�̌����ڃI�u�W�F�N�g")]
+    [Tooltip("物の見た目のオブジェクト")]
     [SerializeField] private GameObject Object;
 
-    [Tooltip("�ϐg���̃G�t�F�N�g")]
+    [Tooltip("擬態時のエフェクト")]
     [SerializeField] private GameObject Effect;
 
+    [Header("振動コントローラー")]
+    [Tooltip("振動コントローラー（Inspectorでリンク）")]
+    public VibrationController vibrationController;
 
     // ==========================
-    // �� �����ϐ�
+    // ■ 内部変数
     // ==========================
-
-    private Animator p_animator;           // �A�j���[�^�[
-    private float MoveSpeed;               // �����ړ����x
-    private bool isMoving = false;         // ���݈ړ������ǂ���
-    private bool isHiding = false;         // �[�Ԓ����ǂ���
-    private bool isFirst = true;           // ����ړ����ǂ���
-    //private bool isDashing = false;        // �_�b�V����Ԃ��ǂ���
-
+    private Animator p_animator;
+    private float MoveSpeed;
+    private bool isMoving = false;
+    private bool isHiding = false;
+    private bool isFirst = true;
 
     // ==========================
-    // �� ������
+    // ■ 初期化処理
     // ==========================
     void Start()
     {
         MoveSpeed = moveSpeed;
         p_animator = GetComponent<Animator>();
 
-        // ������ԁF�l�̎p�ŃX�^�[�g
         People.SetActive(true);
         Object.SetActive(false);
         Effect.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(PitariDB.Instance.GetConBool() == 0)
+        if (PitariDB.Instance.GetConBool() == 0)
         {
             Joycon();
-        }else if (PitariDB.Instance.GetConBool() == 1)
+        }
+        else if (PitariDB.Instance.GetConBool() == 1)
         {
             Oricon();
         }
     }
 
     private void MoveRight(bool isMove, bool isRun)
-    { 
+    {
         if (isMove)
         {
             p_animator.SetBool("isWalk", true);
@@ -73,9 +72,9 @@ public class NewPlayerMove : MonoBehaviour
                 isMoving = true;
                 StartCoroutine(DontHidePlayer());
             }
-            Debug.Log("�E�ړ�");
             transform.position += Vector3.right * MoveSpeed;
-        }else if (isRun)
+        }
+        else if (isRun)
         {
             p_animator.SetBool("isWalk", true);
             if (!isMoving)
@@ -83,7 +82,6 @@ public class NewPlayerMove : MonoBehaviour
                 isMoving = true;
                 StartCoroutine(DontHidePlayer());
             }
-            Debug.Log("�E�_�b�V���ړ�");
             transform.position += Vector3.right * MoveSpeed * 1.3f;
         }
         else
@@ -97,9 +95,6 @@ public class NewPlayerMove : MonoBehaviour
         }
     }
 
-    // ==========================
-    // �� ���m�ɋ[�Ԃ��鏈��
-    // ==========================
     IEnumerator HidePlayer()
     {
         yield return new WaitForSeconds(hideDelay);
@@ -113,9 +108,6 @@ public class NewPlayerMove : MonoBehaviour
         Effect.SetActive(false);
     }
 
-    // ==========================
-    // �� �l�ɖ߂鏈��
-    // ==========================
     IEnumerator DontHidePlayer()
     {
         if (!isMoving) yield break;
@@ -131,22 +123,15 @@ public class NewPlayerMove : MonoBehaviour
         isFirst = false;
     }
 
-    // ==========================
-    // �� �G�ɓ��������Ƃ��̏���
-    // ==========================
-    public void OnBuruBuru()
-    {
-        Input_Player.Instance.OnBuruburu();
-    }
+    // public void OnBuruBuru()
+    // {
+    //     Input_Player.Instance.OnBuruBuru();
+    // }
 
-    // ==========================
-    // �� �O������[�ԏ�Ԃ��擾����
-    // ==========================
     public bool GetisHiding()
     {
         return isHiding;
     }
-
 
     private void Joycon()
     {
@@ -159,25 +144,25 @@ public class NewPlayerMove : MonoBehaviour
         MoveRight(OriconManager.instance.pvcController(), OriconManager.instance.pvcDash());
     }
 
-    private void MediaPipe()
-    {
-
-    }
-
-    //private void KeyCon()
-    //{
-    //}
-
-    private void Preste()
-    {
-
-    }
-
     private void MoveLeft(bool isMove)
     {
         if (isMove)
         {
             transform.position += Vector3.left * MoveSpeed * 10;
+        }
+    }
+
+    // ==========================
+    // ■ 敵との接触時の処理（振動）
+    // ==========================
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            if (vibrationController != null)
+            {
+                vibrationController.OnBuruburu();
+            }
         }
     }
 }

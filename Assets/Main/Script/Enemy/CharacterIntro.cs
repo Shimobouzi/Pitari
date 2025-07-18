@@ -32,13 +32,16 @@ public class IntroManager : MonoBehaviour
     public float startFootstepVolume = 1f;
     public float lookAroundVolume = 1f;
 
+    [Header("見回す効果音の遅延設定")]
+    public float lookAroundSoundDelay = 0.5f;
+
+    [Header("非表示・音声停止設定")]
+    public float hideDelay = 32f;
+
     private AudioSource audioSource;
     private float footstepTimer = 0f;
     private bool canPlayFootsteps = false;
     private bool hasPlayedLookSound = false;
-
-    [Header("非表示・音声停止設定")]
-    public float hideDelay = 32f;
 
     void Start()
     {
@@ -119,7 +122,7 @@ public class IntroManager : MonoBehaviour
                 timer += Time.deltaTime;
                 if (state.IsName("look around"))
                 {
-                    if (state.normalizedTime >= 0.4f && !hasPlayedLookSound && lookAroundSound != null)
+                    if (timer >= lookAroundSoundDelay && !hasPlayedLookSound && lookAroundSound != null)
                     {
                         audioSource.PlayOneShot(lookAroundSound, lookAroundVolume);
                         hasPlayedLookSound = true;
@@ -149,7 +152,7 @@ public class IntroManager : MonoBehaviour
             footstepTimer += Time.deltaTime;
             if (footstepTimer >= currentInterval)
             {
-                audioSource.volume = Mathf.Clamp(footstepVolume, 0f, 10f); // 安全のため上限を設ける
+                audioSource.volume = Mathf.Clamp(footstepVolume, 0f, 10f);
                 audioSource.clip = footstepClip;
                 audioSource.Play();
                 footstepTimer = 0f;

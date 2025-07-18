@@ -14,20 +14,23 @@ public class ShakeToStart : MonoBehaviour
     [SerializeField]
     private GameObject gameScrean;
 
+    //ç´¯ç©ï¼ˆShakeToStart å†…ã ã‘ã§å®Œçµï¼‰
+    private float oriconBuffer = 0f;
+
     private float passTime = 0;
 
     private float maxTime = 3f;
 
-    public Animator smokeAnimator;              // ‰Œ‚ÌAnimator
-    [Header("‰Œ‚ÌŒø‰Ê‰¹")]
-    public AudioClip smokeSound;                // ‰Œ‚Ì‰¹
-    private AudioSource audioSource;            // ‰¹Ä¶—p‚ÌAudioSource
+    public Animator smokeAnimator;              // ç…™ã®Animator
+    [Header("ç…™ã®åŠ¹æœéŸ³")]
+    public AudioClip smokeSound;                // ç…™ã®éŸ³
+    private AudioSource audioSource;            // éŸ³å†ç”Ÿç”¨ã®AudioSource
 
     private bool first = true;
 
     private void Start()
     {
-        // AudioSource‚ğ’Ç‰Á
+        // AudioSourceã‚’è¿½åŠ 
         audioSource = gameObject.AddComponent<AudioSource>();
     }
 
@@ -66,10 +69,22 @@ public class ShakeToStart : MonoBehaviour
     {
         ShakeGameStart(Input_Player.Instance.RightMove_performed);
     }
-
     private void Oricon()
     {
-        ShakeGameStart(OriconManager.instance.pvcController());
+        if (OriconManager.instance.pvcController())
+            oriconBuffer += Time.deltaTime;             // ã‚²ãƒ¼ã‚¸ã®æºœã¾ã‚Šé€Ÿåº¦ï¼ˆå¤§ãã„ã»ã©é€Ÿãæºœã¾ã‚‹ï¼‰
+        else
+            oriconBuffer -= Time.deltaTime * 0.4f;      // ã‚²ãƒ¼ã‚¸ã®æ¸›å°‘é€Ÿåº¦ï¼ˆå°ã•ã„ã»ã©æ¸›ã‚Šã«ãã„ï¼‰
+
+        oriconBuffer = Mathf.Clamp(oriconBuffer, 0f, maxTime);
+        passTime = oriconBuffer;                        // ãã®ã¾ã¾ã‚²ãƒ¼ã‚¸ã«åæ˜ 
+        StartGage.fillAmount = passTime / maxTime;
+
+        if (passTime >= maxTime && first)
+        {
+            first = false;
+            StartCoroutine(nextScene());
+        }
     }
 
     IEnumerator nextScene()
@@ -77,12 +92,12 @@ public class ShakeToStart : MonoBehaviour
         AsyncOperation stage = SceneManager.LoadSceneAsync("Stage1");
         stage.allowSceneActivation = false;
 
-        // ‰ŒƒAƒjƒ[ƒVƒ‡ƒ“ŠJn
+        // ç…™ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³é–‹å§‹
         smokeAnimator.SetBool("IsSmoke", true);
-        // ‰¹‚ğÄ¶iƒsƒbƒ`‚ğ‰º‚°‚Ä‚ä‚Á‚­‚èÄ¶j
+        // éŸ³ã‚’å†ç”Ÿï¼ˆãƒ”ãƒƒãƒã‚’ä¸‹ã’ã¦ã‚†ã£ãã‚Šå†ç”Ÿï¼‰
         if (smokeSound != null)
         {
-            audioSource.pitch = 0.8f; // 1.0‚ª’ÊíA0.8‚Å­‚µ’x‚­‚È‚é
+            audioSource.pitch = 0.8f; // 1.0ãŒé€šå¸¸ã€0.8ã§å°‘ã—é…ããªã‚‹
             audioSource.PlayOneShot(smokeSound);
         }
         yield return new WaitForSeconds(0.75f);

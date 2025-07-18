@@ -511,7 +511,7 @@ GameObject:
   - component: {fileID: 6473887489703004373}
   m_Layer: 0
   m_Name: Hayaoni_TypeA
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -526,7 +526,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.532, y: 0.30425, z: 0}
-  m_LocalScale: {x: 2.134696, y: 2.134696, z: 0}
+  m_LocalScale: {x: 2.398758, y: 2.398758, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3716499918311878211}
@@ -627,6 +627,7 @@ MonoBehaviour:
   footstep1: {fileID: 8300000, guid: 8a70bc90624a8f140b5b26e6cac66495, type: 3}
   footstep2: {fileID: 8300000, guid: 634a183341c941a47a7df63bad259f39, type: 3}
   footstepInterval: 0.5
+  maxWalkDistance: 15
 --- !u!1 &5444340854731447936
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +655,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.3153, y: 0.0014, z: 0}
-  m_LocalScale: {x: 0.04248193, y: 0.03590664, z: 0}
+  m_LocalScale: {x: 0.08900026, y: 0.075224936, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7643140981994922252}
@@ -703,7 +704,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1557013538026691241, guid: dc478cfe0a363014ab4f9ac7215e259c, type: 3}
+  m_Sprite: {fileID: -3187939643673315986, guid: a08a99d7b96199549a2a7b2ed9c858bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

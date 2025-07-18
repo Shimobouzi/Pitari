@@ -416,8 +416,8 @@ public class Input_Player : MonoBehaviour
 		_input.Player.RightDash.canceled -= OnRightDash_canceled;
 	}
 
-	public void OnBuruburu()
+	public void OnBuruBuru()
 	{
-		_joyconL.SetRumble(320, 640, 1.0f, 500);
+		_joyconL.SetRumble(320, 640, 1.0f, 300);
     }
 }
