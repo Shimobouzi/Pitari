@@ -420,4 +420,10 @@ public class Input_Player : MonoBehaviour
 	{
 		_joyconL.SetRumble(320, 640, 1.0f, 300);
     }
+
+	public void Restart()
+	{
+		FindJoycon();
+	}
+
 }

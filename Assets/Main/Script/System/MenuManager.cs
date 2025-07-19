@@ -37,4 +37,25 @@ public class MenuManager : MonoBehaviour
             Application.Quit();
 #endif
     }
+    public void OnJoycon() //and KeyBord
+    {
+        PitariDB.Instance.OnJoycon();
+    }
+
+    public void OnOricon()
+    {
+        PitariDB.Instance.OnOricon();
+    }
+    public void OnPrecon()
+    {
+        PitariDB.Instance.OnPrecon();
+    }
+    public void Japanese()
+    {
+        PitariDB.Instance.Japanese();
+    }
+    public void English()
+    {
+        PitariDB.Instance.English();
+    }
 }

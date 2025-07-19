@@ -103,6 +103,8 @@ public class ShakeToStart : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
         gameScrean.SetActive(true);
         yield return new WaitForSeconds(1.5f);
+        AudioManager.StopBgm();
+        AudioManager.PlayBgm("bgmE");
         stage.allowSceneActivation = true;
     }
 

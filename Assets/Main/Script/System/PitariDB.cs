@@ -3,6 +3,7 @@ using UnityEngine;
 public class PitariDB : MonoBehaviour
 {
     private int conBool = 0;
+    public int lanBool = 0;
     /// <summary>
     /// シングルトンインスタンス
     /// </summary>
@@ -25,6 +26,7 @@ public class PitariDB : MonoBehaviour
         Debug.Log("joycon");
         conBool = 0;
         JoyconManager.Instance.ReStart();
+        Input_Player.Instance.Restart();
     }
 
     public void OnOricon()
@@ -37,9 +39,22 @@ public class PitariDB : MonoBehaviour
     {
         conBool = 2;
     }
+    public void Japanese()
+    {
+        lanBool = 0;
+    }
+    public void English()
+    {
+        lanBool = 1;
+    }
 
     public int GetConBool()
     {
         return conBool;
+    }
+
+    public int GetLanBool()
+    {
+        return lanBool;
     }
 }

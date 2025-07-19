@@ -8,11 +8,11 @@ using UnityEngine;
 public class AudioManager
 {
     //SEの同時再生のチャンネル
-    private const int SE_CHANNEL = 4;
+    private const int SE_CHANNEL = 7;
 
     //音量 
-    public static float SEVolume;
-    public static float BgmVolume;
+    public static float SEVolume = 1f;
+    public static float BgmVolume = 1f;
 
     //サウンド種別
     private enum soundType
@@ -49,19 +49,22 @@ public class AudioManager
         public string Key;
         //ファイルの名前
         public string Name;
+        //チャンネル
+        public int Channel = -1;
         //オーディオクリップ
         public AudioClip Clip;
         //音の長さ
         public float Duration;
 
         //コンストラクタ
-        public _Data(string key, string name)
+        public _Data(string key, string name, int channel = -1)
         {
             this.Key = key;
             this.Name = "Sounds/" + name;
+            this.Channel = channel;
 
             //AudioClip取得
-            Clip = Resources.Load(Name) as AudioClip;
+            Clip = Resources.Load<AudioClip>(Name);
             //音の長さの取得
             Duration = Clip.length;
         }
@@ -88,7 +91,6 @@ public class AudioManager
             //AudioSourceの作成
             _bgmSource = _gameObject.AddComponent<AudioSource>();
             _SESourceDefault = _gameObject.AddComponent<AudioSource>();
-            _gameObject.AddComponent<AudioVolumeChange>();
             for (int i = 0; i < SE_CHANNEL; i++)
             {
                 _SESourceArray[i] = _gameObject.AddComponent<AudioSource>();
@@ -116,15 +118,22 @@ public class AudioManager
         }
     }
 
+    //GetAudioSourceのラッパー関数、チャンネルごとのisPlayingを取得
+    public static bool IsSEChannelPlaying(int channel)
+    {
+        var source = GetInstanse().GetAudioSource(soundType.SE, channel);
+        return source != null && source.isPlaying;
+    }
+
     //サウンドのロード
     //必:Resources/Soundsにデータの配置、ResourcesのCSVに追記
     public static void LoadBgm(string key, string name)
     {
         GetInstanse().LoadBgmInternal(key, name);
     }
-    public static void LoadSE(string key, string name)
+    public static void LoadSE(string key, string name, int channel = -1)
     {
-        GetInstanse().LoadSEInternal(key, name);
+        GetInstanse().LoadSEInternal(key, name, channel);
     }
 
 
@@ -138,7 +147,7 @@ public class AudioManager
         _poolBgm.Add(key, new _Data(key, name));
     }
 
-    private void LoadSEInternal(string key, string name)
+    private void LoadSEInternal(string key, string name, int channnel)
     {
         if (_poolSE.ContainsKey(key))
         {
@@ -186,17 +195,22 @@ public class AudioManager
     {
         GetAudioSource(soundType.Bgm).Stop();
     }
+    //BGM取得(セッティング用)
+    public static AudioSource GetBgmSource()
+    {
+        return GetInstanse()._bgmSource;
+    }
 
+
+
+    //SE再生
+    //必:LoadSE
     public static bool PlaySE(string key)
     {
         return GetInstanse().PlaySEInternal(key);
     }
 
-
-    //SE再生
-    //必:LoadSE
-
-    private bool PlaySEInternal(string key, int channel = -1)
+    private bool PlaySEInternal(string key)
     {
         if (!_poolSE.ContainsKey(key))
         {
@@ -205,6 +219,7 @@ public class AudioManager
 
         //サウンドリソース取得
         var _data = _poolSE[key];
+        int channel = _data.Channel;
 
         if (0 <= channel && channel < SE_CHANNEL)
         {
@@ -223,5 +238,25 @@ public class AudioManager
 
         return true;
     }
+
+    //長さ取得
+    public static float GetSEDuration(string key)
+    {
+        return GetInstanse().GetSEDurationInternal(key);
+    }
+
+    private float GetSEDurationInternal(string key)
+    {
+        if (_poolSE.ContainsKey(key))
+        {
+            return _poolSE[key].Duration;
+        }
+        else
+        {
+            Debug.LogWarning($"SEの長さ取得に失敗: key='{key}' が見つかりません");
+            return 0f;
+        }
+    }
+
 
 }

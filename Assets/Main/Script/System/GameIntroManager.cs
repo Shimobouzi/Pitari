@@ -11,6 +11,9 @@ public class GameIntroSequence : MonoBehaviour
     public List<Sprite> firstTutorialSprites;   // 最初に表示するチュートリアル画像
     public List<Sprite> secondTutorialSprites;  // 2回目に表示するチュートリアル画像
 
+    public List<Sprite> EfirstTutorialSprites;   // 最初に表示するチュートリアル画像
+    public List<Sprite> EsecondTutorialSprites;  // 2回目に表示するチュートリアル画像
+
     [Header("表示タイミング（秒）")]
     public float firstTutorialDelay = 1f;       // 最初のチュートリアル表示までの待機時間
     public float secondTutorialDelay = 11f;     // 2回目のチュートリアル表示までの待機時間（全体の時間）
@@ -30,7 +33,15 @@ public class GameIntroSequence : MonoBehaviour
         yield return new WaitForSeconds(firstTutorialDelay);
 
         // 最初の画像セットを設定して表示
-        tutorialUIManager.SetTutorialSprites(firstTutorialSprites);
+        if (PitariDB.Instance.GetLanBool() == 0)
+        {
+            tutorialUIManager.SetTutorialSprites(firstTutorialSprites);
+        }
+        else
+        {
+            tutorialUIManager.SetTutorialSprites(EfirstTutorialSprites);
+        }
+        
         tutorialUIManager.ShowTutorial();
 
         // チュートリアルが閉じられるのを待つ
@@ -43,7 +54,15 @@ public class GameIntroSequence : MonoBehaviour
         yield return new WaitForSeconds(secondTutorialDelay - firstTutorialDelay);
 
         // 2回目の画像セットを設定して表示
-        tutorialUIManager.SetTutorialSprites(secondTutorialSprites);
+        if (PitariDB.Instance.GetLanBool() == 0)
+        {
+            tutorialUIManager.SetTutorialSprites(secondTutorialSprites);
+        }
+        else
+        {
+            tutorialUIManager.SetTutorialSprites(EsecondTutorialSprites);
+        }
+        
         tutorialUIManager.ShowTutorial();
 
         // チュートリアルが閉じられるのを再度待つ

@@ -23,13 +23,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Main/Scenes/Main.unity
     guid: 582daec5d0ee57147b156ef50e856c82
-  - enabled: 0
+  - enabled: 1
     path: Assets/Main/Scenes/Stage2.unity
     guid: f1b8c03badba72343b002ba88be5ad05
   - enabled: 0
     path: Assets/Main/Scenes/Stage3.unity
     guid: 68bdb2140870be54caf6392a9eb1d4b7
-  - enabled: 0
+  - enabled: 1
     path: Assets/Takitsu/Scene/Ending.unity
     guid: e459fa2cc58a7fe479390280216f7062
   m_configObjects:
