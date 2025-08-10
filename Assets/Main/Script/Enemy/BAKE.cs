@@ -26,9 +26,11 @@ public class BAKE : MonoBehaviour
 
                 if (!playerMove.GetisHiding())
                 {
+                    Destroy(this);
                     hasDetectedPlayer = true;
                     Debug.Log("neko：擬態していないプレイヤーと接触 → ゲームオーバー");
-                    SceneManager.LoadScene("Result");
+                    GameOver.instance.OnGameOver();
+                    
                 }
                 else
                 {

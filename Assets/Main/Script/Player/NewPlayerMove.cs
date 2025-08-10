@@ -52,6 +52,7 @@ public class NewPlayerMove : MonoBehaviour
 
     void Update()
     {
+        if (GameOver.instance.BOOL == true) return;
         if (PitariDB.Instance.GetConBool() == 0)
         {
             Joycon();

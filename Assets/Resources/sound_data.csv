@@ -3,3 +3,4 @@ bgmT,bgm,n_bgm_title,0
 bgmG,bgm,gakkou_bgm_loop,0
 bgmE,bgm,eki_main_bgm,0
 bgmJ,bgm,pitari_jinja_main_bgm,0
+GameO,se,bgm_gameover,1

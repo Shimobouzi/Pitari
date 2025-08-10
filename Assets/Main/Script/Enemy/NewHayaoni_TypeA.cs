@@ -111,7 +111,7 @@ public class NewHayaoni_TypeA : MonoBehaviour
         {
             hasDetectedPlayer = true;
             Debug.Log("速鬼：擬態していないプレイヤーを視界で発見 → ゲームオーバー");
-            SceneManager.LoadScene("Result");
+            GameOver.instance.OnGameOver();
         }
         else
         {
@@ -137,9 +137,8 @@ public class NewHayaoni_TypeA : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (hasDetectedPlayer) return;
 
-        if (other.CompareTag("Player"))
+        if (!hasDetectedPlayer&&other.CompareTag("Player"))
         {
             var playerMove = other.transform.parent.GetComponent<NewPlayerMove>();
             if (playerMove != null)
@@ -149,9 +148,11 @@ public class NewHayaoni_TypeA : MonoBehaviour
 
                 if (!playerMove.GetisHiding())
                 {
+                    Destroy(this);
                     hasDetectedPlayer = true;
                     Debug.Log("速鬼：擬態していないプレイヤーと接触 → ゲームオーバー");
-                    SceneManager.LoadScene("Result");
+                    GameOver.instance.OnGameOver();
+                    
                 }
                 else
                 {
